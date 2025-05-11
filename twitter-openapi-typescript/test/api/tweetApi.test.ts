@@ -84,7 +84,7 @@ test('getBookmarks', async () => {
 test('getCommunityTweets', async () => {
   logger.log('getCommunityTweets');
   const client = await getClient();
-  const response = await client.getTweetApi().getCommunityTweetsTimeline();
+  const response = await client.getTweetApi().getCommunityTweetsTimeline({ communityId: '1489422448332197888' });
   response.data.data.filter((e) => !e.promotedMetadata).forEach((e) => printTweet(e));
   expect(response.raw.response.ok).toBe(true);
 });
@@ -92,7 +92,7 @@ test('getCommunityTweets', async () => {
 test('getCommunityMedia', async () => {
   logger.log('getCommunityMedia');
   const client = await getClient();
-  const response = await client.getTweetApi().getCommunityMediaTimeline();
+  const response = await client.getTweetApi().getCommunityMediaTimeline({ communityId: '1489422448332197888' });
   response.data.data.filter((e) => !e.promotedMetadata).forEach((e) => printTweet(e));
   expect(response.raw.response.ok).toBe(true);
 });
