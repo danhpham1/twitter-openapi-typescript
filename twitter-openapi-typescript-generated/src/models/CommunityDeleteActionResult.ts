@@ -35,7 +35,7 @@ export interface CommunityDeleteActionResult {
     typename: TypeName;
     /**
      * 
-     * @type {string}
+     * @type {CommunityDeleteActionResultReasonEnum}
      * @memberof CommunityDeleteActionResult
      */
     reason: CommunityDeleteActionResultReasonEnum;

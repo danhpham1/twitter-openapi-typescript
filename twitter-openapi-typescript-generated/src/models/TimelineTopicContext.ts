@@ -36,7 +36,7 @@ import {
 export interface TimelineTopicContext {
     /**
      * 
-     * @type {string}
+     * @type {TimelineTopicContextFunctionalityTypeEnum}
      * @memberof TimelineTopicContext
      */
     functionalityType?: TimelineTopicContextFunctionalityTypeEnum;

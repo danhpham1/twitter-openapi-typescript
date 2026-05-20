@@ -49,7 +49,7 @@ export interface TweetInterstitial {
     typename: TypeName;
     /**
      * 
-     * @type {string}
+     * @type {TweetInterstitialDisplayTypeEnum}
      * @memberof TweetInterstitial
      */
     displayType: TweetInterstitialDisplayTypeEnum;
@@ -72,7 +72,8 @@ export interface TweetInterstitial {
  * @export
  */
 export const TweetInterstitialDisplayTypeEnum = {
-    NonCompliant: 'NonCompliant'
+    NonCompliant: 'NonCompliant',
+    EntireTweet: 'EntireTweet'
 } as const;
 export type TweetInterstitialDisplayTypeEnum = typeof TweetInterstitialDisplayTypeEnum[keyof typeof TweetInterstitialDisplayTypeEnum];
 

@@ -85,6 +85,7 @@ type GetBookmarksParam = {
 };
 
 type GetCommunityTweetsTimelineParam = {
+  communityId: string;
   cursor?: string;
   count?: number;
   rankingMode?: 'Recency' | 'Relevance' | (string & {});
@@ -92,6 +93,7 @@ type GetCommunityTweetsTimelineParam = {
 };
 
 type GetCommunityMediaTimelineParam = {
+  communityId: string;
   cursor?: string;
   count?: number;
   extraParam?: { [key: string]: any };
@@ -298,8 +300,9 @@ export class TweetApiUtils {
     return response;
   }
 
-  async getCommunityTweetsTimeline(param: GetCommunityTweetsTimelineParam = {}): Promise<ResponseType> {
+  async getCommunityTweetsTimeline(param: GetCommunityTweetsTimelineParam): Promise<ResponseType> {
     const args = {
+      communityId: param.communityId,
       ...(param.count == undefined ? {} : { count: param.count }),
       ...(param.cursor == undefined ? {} : { cursor: param.cursor }),
       ...(param.rankingMode == undefined ? {} : { rankingMode: param.rankingMode }),
@@ -316,8 +319,9 @@ export class TweetApiUtils {
     return response;
   }
 
-  async getCommunityMediaTimeline(param: GetCommunityMediaTimelineParam = {}): Promise<ResponseType> {
+  async getCommunityMediaTimeline(param: GetCommunityMediaTimelineParam): Promise<ResponseType> {
     const args = {
+      communityId: param.communityId,
       ...(param.count == undefined ? {} : { count: param.count }),
       ...(param.cursor == undefined ? {} : { cursor: param.cursor }),
       ...param.extraParam,

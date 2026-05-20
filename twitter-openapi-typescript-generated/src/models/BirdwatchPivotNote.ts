@@ -13,12 +13,38 @@
  */
 
 import { mapValues } from '../runtime';
+import type { GrokTranslatedCommunityNoteWithAvailability } from './GrokTranslatedCommunityNoteWithAvailability';
+import {
+    GrokTranslatedCommunityNoteWithAvailabilityFromJSON,
+    GrokTranslatedCommunityNoteWithAvailabilityFromJSONTyped,
+    GrokTranslatedCommunityNoteWithAvailabilityToJSON,
+    GrokTranslatedCommunityNoteWithAvailabilityToJSONTyped,
+} from './GrokTranslatedCommunityNoteWithAvailability';
+
 /**
  * 
  * @export
  * @interface BirdwatchPivotNote
  */
 export interface BirdwatchPivotNote {
+    /**
+     * 
+     * @type {GrokTranslatedCommunityNoteWithAvailability}
+     * @memberof BirdwatchPivotNote
+     */
+    grokTranslatedCommunityNoteWithAvailability?: GrokTranslatedCommunityNoteWithAvailability;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof BirdwatchPivotNote
+     */
+    isCommunityNoteTranslatable?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof BirdwatchPivotNote
+     */
+    language?: string;
     /**
      * 
      * @type {string}
@@ -45,6 +71,9 @@ export function BirdwatchPivotNoteFromJSONTyped(json: any, ignoreDiscriminator: 
     }
     return {
         
+        'grokTranslatedCommunityNoteWithAvailability': json['grok_translated_community_note_with_availability'] == null ? undefined : GrokTranslatedCommunityNoteWithAvailabilityFromJSON(json['grok_translated_community_note_with_availability']),
+        'isCommunityNoteTranslatable': json['is_community_note_translatable'] == null ? undefined : json['is_community_note_translatable'],
+        'language': json['language'] == null ? undefined : json['language'],
         'restId': json['rest_id'],
     };
 }
@@ -60,6 +89,9 @@ export function BirdwatchPivotNoteToJSONTyped(value?: BirdwatchPivotNote | null,
 
     return {
         
+        'grok_translated_community_note_with_availability': GrokTranslatedCommunityNoteWithAvailabilityToJSON(value['grokTranslatedCommunityNoteWithAvailability']),
+        'is_community_note_translatable': value['isCommunityNoteTranslatable'],
+        'language': value['language'],
         'rest_id': value['restId'],
     };
 }

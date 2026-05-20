@@ -109,7 +109,7 @@ export interface Session {
     superFollowersCount: number;
     /**
      * 
-     * @type {string}
+     * @type {SessionSuperFollowsApplicationStatusEnum}
      * @memberof Session
      */
     superFollowsApplicationStatus: SessionSuperFollowsApplicationStatusEnum;

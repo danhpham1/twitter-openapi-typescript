@@ -41,7 +41,7 @@ export interface CommunityInvitesResult {
     message: string;
     /**
      * 
-     * @type {string}
+     * @type {CommunityInvitesResultReasonEnum}
      * @memberof CommunityInvitesResult
      */
     reason: CommunityInvitesResultReasonEnum;

@@ -49,7 +49,7 @@ export interface CoverCta {
     text?: string;
     /**
      * 
-     * @type {string}
+     * @type {CoverCtaButtonStyleEnum}
      * @memberof CoverCta
      */
     buttonStyle?: CoverCtaButtonStyleEnum;

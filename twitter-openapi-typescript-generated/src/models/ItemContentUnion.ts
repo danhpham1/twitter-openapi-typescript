@@ -111,7 +111,7 @@ export function ItemContentUnionFromJSONTyped(json: any, ignoreDiscriminator: bo
         case 'TimelineUser':
             return Object.assign({}, TimelineUserFromJSONTyped(json, true), { typename: 'TimelineUser' } as const);
         default:
-            throw new Error(`No variant of ItemContentUnion exists with 'typename=${json['typename']}'`);
+            return json;
     }
 }
 
@@ -143,8 +143,7 @@ export function ItemContentUnionToJSONTyped(value?: ItemContentUnion | null, ign
         case 'TimelineUser':
             return Object.assign({}, TimelineUserToJSON(value), { typename: 'TimelineUser' } as const);
         default:
-            throw new Error(`No variant of ItemContentUnion exists with 'typename=${value['typename']}'`);
+            return value;
     }
-
 }
 

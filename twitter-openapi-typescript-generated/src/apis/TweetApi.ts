@@ -12,45 +12,62 @@
  * Do not edit the class manually.
  */
 
-
 import * as runtime from '../runtime';
-import type {
-  BookmarksResponse,
-  CommunityAboutTimelineResponse,
-  CommunityMediaTimelineResponse,
-  CommunityTweetsTimelineResponse,
-  ListLatestTweetsTimelineResponse,
-  NotificationsTimelineResponse,
-  SearchTimelineResponse,
-  TimelineResponse,
-  TweetDetailResponse,
-  UserHighlightsTweetsResponse,
-  UserTweetsResponse,
-} from '../models/index';
 import {
+    type BookmarksResponse,
     BookmarksResponseFromJSON,
     BookmarksResponseToJSON,
+} from '../models/BookmarksResponse';
+import {
+    type CommunityAboutTimelineResponse,
     CommunityAboutTimelineResponseFromJSON,
     CommunityAboutTimelineResponseToJSON,
+} from '../models/CommunityAboutTimelineResponse';
+import {
+    type CommunityMediaTimelineResponse,
     CommunityMediaTimelineResponseFromJSON,
     CommunityMediaTimelineResponseToJSON,
+} from '../models/CommunityMediaTimelineResponse';
+import {
+    type CommunityTweetsTimelineResponse,
     CommunityTweetsTimelineResponseFromJSON,
     CommunityTweetsTimelineResponseToJSON,
+} from '../models/CommunityTweetsTimelineResponse';
+import {
+    type ListLatestTweetsTimelineResponse,
     ListLatestTweetsTimelineResponseFromJSON,
     ListLatestTweetsTimelineResponseToJSON,
+} from '../models/ListLatestTweetsTimelineResponse';
+import {
+    type NotificationsTimelineResponse,
     NotificationsTimelineResponseFromJSON,
     NotificationsTimelineResponseToJSON,
+} from '../models/NotificationsTimelineResponse';
+import {
+    type SearchTimelineResponse,
     SearchTimelineResponseFromJSON,
     SearchTimelineResponseToJSON,
+} from '../models/SearchTimelineResponse';
+import {
+    type TimelineResponse,
     TimelineResponseFromJSON,
     TimelineResponseToJSON,
+} from '../models/TimelineResponse';
+import {
+    type TweetDetailResponse,
     TweetDetailResponseFromJSON,
     TweetDetailResponseToJSON,
+} from '../models/TweetDetailResponse';
+import {
+    type UserHighlightsTweetsResponse,
     UserHighlightsTweetsResponseFromJSON,
     UserHighlightsTweetsResponseToJSON,
+} from '../models/UserHighlightsTweetsResponse';
+import {
+    type UserTweetsResponse,
     UserTweetsResponseFromJSON,
     UserTweetsResponseToJSON,
-} from '../models/index';
+} from '../models/UserTweetsResponse';
 
 export interface GetBookmarksRequest {
     pathQueryId: string;
@@ -154,9 +171,9 @@ export interface GetUserTweetsAndRepliesRequest {
 export class TweetApi extends runtime.BaseAPI {
 
     /**
-     * get bookmarks
+     * Creates request options for getBookmarks without sending the request
      */
-    async getBookmarksRaw(requestParameters: GetBookmarksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<BookmarksResponse>> {
+    async getBookmarksRequestOpts(requestParameters: GetBookmarksRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -274,12 +291,24 @@ export class TweetApi extends runtime.BaseAPI {
             headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
         }
 
-        const response = await this.request({
-            path: `/graphql/{pathQueryId}/Bookmarks`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
+
+        let urlPath = `/graphql/{pathQueryId}/Bookmarks`;
+        urlPath = urlPath.replace('{pathQueryId}', encodeURIComponent(String(requestParameters['pathQueryId'])));
+
+        return {
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * get bookmarks
+     */
+    async getBookmarksRaw(requestParameters: GetBookmarksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<BookmarksResponse>> {
+        const requestOptions = await this.getBookmarksRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => BookmarksResponseFromJSON(jsonValue));
     }
@@ -293,9 +322,9 @@ export class TweetApi extends runtime.BaseAPI {
     }
 
     /**
-     * get about of community
+     * Creates request options for getCommunityAboutTimeline without sending the request
      */
-    async getCommunityAboutTimelineRaw(requestParameters: GetCommunityAboutTimelineRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CommunityAboutTimelineResponse>> {
+    async getCommunityAboutTimelineRequestOpts(requestParameters: GetCommunityAboutTimelineRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -413,12 +442,24 @@ export class TweetApi extends runtime.BaseAPI {
             headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
         }
 
-        const response = await this.request({
-            path: `/graphql/{pathQueryId}/CommunityAboutTimeline`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
+
+        let urlPath = `/graphql/{pathQueryId}/CommunityAboutTimeline`;
+        urlPath = urlPath.replace('{pathQueryId}', encodeURIComponent(String(requestParameters['pathQueryId'])));
+
+        return {
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * get about of community
+     */
+    async getCommunityAboutTimelineRaw(requestParameters: GetCommunityAboutTimelineRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CommunityAboutTimelineResponse>> {
+        const requestOptions = await this.getCommunityAboutTimelineRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CommunityAboutTimelineResponseFromJSON(jsonValue));
     }
@@ -432,9 +473,9 @@ export class TweetApi extends runtime.BaseAPI {
     }
 
     /**
-     * get media list of community
+     * Creates request options for getCommunityMediaTimeline without sending the request
      */
-    async getCommunityMediaTimelineRaw(requestParameters: GetCommunityMediaTimelineRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CommunityMediaTimelineResponse>> {
+    async getCommunityMediaTimelineRequestOpts(requestParameters: GetCommunityMediaTimelineRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -552,12 +593,24 @@ export class TweetApi extends runtime.BaseAPI {
             headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
         }
 
-        const response = await this.request({
-            path: `/graphql/{pathQueryId}/CommunityMediaTimeline`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
+
+        let urlPath = `/graphql/{pathQueryId}/CommunityMediaTimeline`;
+        urlPath = urlPath.replace('{pathQueryId}', encodeURIComponent(String(requestParameters['pathQueryId'])));
+
+        return {
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * get media list of community
+     */
+    async getCommunityMediaTimelineRaw(requestParameters: GetCommunityMediaTimelineRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CommunityMediaTimelineResponse>> {
+        const requestOptions = await this.getCommunityMediaTimelineRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CommunityMediaTimelineResponseFromJSON(jsonValue));
     }
@@ -571,9 +624,9 @@ export class TweetApi extends runtime.BaseAPI {
     }
 
     /**
-     * get tweet list of community. rankingMode:[Recency, Relevance]
+     * Creates request options for getCommunityTweetsTimeline without sending the request
      */
-    async getCommunityTweetsTimelineRaw(requestParameters: GetCommunityTweetsTimelineRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CommunityTweetsTimelineResponse>> {
+    async getCommunityTweetsTimelineRequestOpts(requestParameters: GetCommunityTweetsTimelineRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -691,12 +744,24 @@ export class TweetApi extends runtime.BaseAPI {
             headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
         }
 
-        const response = await this.request({
-            path: `/graphql/{pathQueryId}/CommunityTweetsTimeline`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
+
+        let urlPath = `/graphql/{pathQueryId}/CommunityTweetsTimeline`;
+        urlPath = urlPath.replace('{pathQueryId}', encodeURIComponent(String(requestParameters['pathQueryId'])));
+
+        return {
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * get tweet list of community. rankingMode:[Recency, Relevance]
+     */
+    async getCommunityTweetsTimelineRaw(requestParameters: GetCommunityTweetsTimelineRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CommunityTweetsTimelineResponse>> {
+        const requestOptions = await this.getCommunityTweetsTimelineRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CommunityTweetsTimelineResponseFromJSON(jsonValue));
     }
@@ -710,9 +775,9 @@ export class TweetApi extends runtime.BaseAPI {
     }
 
     /**
-     * get tweet list of timeline
+     * Creates request options for getHomeLatestTimeline without sending the request
      */
-    async getHomeLatestTimelineRaw(requestParameters: GetHomeLatestTimelineRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TimelineResponse>> {
+    async getHomeLatestTimelineRequestOpts(requestParameters: GetHomeLatestTimelineRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -830,12 +895,24 @@ export class TweetApi extends runtime.BaseAPI {
             headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
         }
 
-        const response = await this.request({
-            path: `/graphql/{pathQueryId}/HomeLatestTimeline`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
+
+        let urlPath = `/graphql/{pathQueryId}/HomeLatestTimeline`;
+        urlPath = urlPath.replace('{pathQueryId}', encodeURIComponent(String(requestParameters['pathQueryId'])));
+
+        return {
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * get tweet list of timeline
+     */
+    async getHomeLatestTimelineRaw(requestParameters: GetHomeLatestTimelineRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TimelineResponse>> {
+        const requestOptions = await this.getHomeLatestTimelineRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => TimelineResponseFromJSON(jsonValue));
     }
@@ -849,9 +926,9 @@ export class TweetApi extends runtime.BaseAPI {
     }
 
     /**
-     * get tweet list of timeline
+     * Creates request options for getHomeTimeline without sending the request
      */
-    async getHomeTimelineRaw(requestParameters: GetHomeTimelineRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TimelineResponse>> {
+    async getHomeTimelineRequestOpts(requestParameters: GetHomeTimelineRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -969,12 +1046,24 @@ export class TweetApi extends runtime.BaseAPI {
             headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
         }
 
-        const response = await this.request({
-            path: `/graphql/{pathQueryId}/HomeTimeline`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
+
+        let urlPath = `/graphql/{pathQueryId}/HomeTimeline`;
+        urlPath = urlPath.replace('{pathQueryId}', encodeURIComponent(String(requestParameters['pathQueryId'])));
+
+        return {
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * get tweet list of timeline
+     */
+    async getHomeTimelineRaw(requestParameters: GetHomeTimelineRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TimelineResponse>> {
+        const requestOptions = await this.getHomeTimelineRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => TimelineResponseFromJSON(jsonValue));
     }
@@ -988,9 +1077,9 @@ export class TweetApi extends runtime.BaseAPI {
     }
 
     /**
-     * get user likes tweets
+     * Creates request options for getLikes without sending the request
      */
-    async getLikesRaw(requestParameters: GetLikesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserTweetsResponse>> {
+    async getLikesRequestOpts(requestParameters: GetLikesRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -1119,12 +1208,24 @@ export class TweetApi extends runtime.BaseAPI {
             headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
         }
 
-        const response = await this.request({
-            path: `/graphql/{pathQueryId}/Likes`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
+
+        let urlPath = `/graphql/{pathQueryId}/Likes`;
+        urlPath = urlPath.replace('{pathQueryId}', encodeURIComponent(String(requestParameters['pathQueryId'])));
+
+        return {
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * get user likes tweets
+     */
+    async getLikesRaw(requestParameters: GetLikesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserTweetsResponse>> {
+        const requestOptions = await this.getLikesRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UserTweetsResponseFromJSON(jsonValue));
     }
@@ -1138,9 +1239,9 @@ export class TweetApi extends runtime.BaseAPI {
     }
 
     /**
-     * get tweet list of timeline
+     * Creates request options for getListLatestTweetsTimeline without sending the request
      */
-    async getListLatestTweetsTimelineRaw(requestParameters: GetListLatestTweetsTimelineRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ListLatestTweetsTimelineResponse>> {
+    async getListLatestTweetsTimelineRequestOpts(requestParameters: GetListLatestTweetsTimelineRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -1258,12 +1359,24 @@ export class TweetApi extends runtime.BaseAPI {
             headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
         }
 
-        const response = await this.request({
-            path: `/graphql/{pathQueryId}/ListLatestTweetsTimeline`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
+
+        let urlPath = `/graphql/{pathQueryId}/ListLatestTweetsTimeline`;
+        urlPath = urlPath.replace('{pathQueryId}', encodeURIComponent(String(requestParameters['pathQueryId'])));
+
+        return {
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * get tweet list of timeline
+     */
+    async getListLatestTweetsTimelineRaw(requestParameters: GetListLatestTweetsTimelineRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ListLatestTweetsTimelineResponse>> {
+        const requestOptions = await this.getListLatestTweetsTimelineRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ListLatestTweetsTimelineResponseFromJSON(jsonValue));
     }
@@ -1277,9 +1390,9 @@ export class TweetApi extends runtime.BaseAPI {
     }
 
     /**
-     * get notification list. timeline_type:[All, Verified, Mentions]
+     * Creates request options for getNotificationsTimeline without sending the request
      */
-    async getNotificationsTimelineRaw(requestParameters: GetNotificationsTimelineRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<NotificationsTimelineResponse>> {
+    async getNotificationsTimelineRequestOpts(requestParameters: GetNotificationsTimelineRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -1397,12 +1510,24 @@ export class TweetApi extends runtime.BaseAPI {
             headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
         }
 
-        const response = await this.request({
-            path: `/graphql/{pathQueryId}/NotificationsTimeline`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
+
+        let urlPath = `/graphql/{pathQueryId}/NotificationsTimeline`;
+        urlPath = urlPath.replace('{pathQueryId}', encodeURIComponent(String(requestParameters['pathQueryId'])));
+
+        return {
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * get notification list. timeline_type:[All, Verified, Mentions]
+     */
+    async getNotificationsTimelineRaw(requestParameters: GetNotificationsTimelineRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<NotificationsTimelineResponse>> {
+        const requestOptions = await this.getNotificationsTimelineRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => NotificationsTimelineResponseFromJSON(jsonValue));
     }
@@ -1416,9 +1541,9 @@ export class TweetApi extends runtime.BaseAPI {
     }
 
     /**
-     * search tweet list. product:[Top, Latest, People, Photos, Videos]
+     * Creates request options for getSearchTimeline without sending the request
      */
-    async getSearchTimelineRaw(requestParameters: GetSearchTimelineRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SearchTimelineResponse>> {
+    async getSearchTimelineRequestOpts(requestParameters: GetSearchTimelineRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -1536,12 +1661,24 @@ export class TweetApi extends runtime.BaseAPI {
             headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
         }
 
-        const response = await this.request({
-            path: `/graphql/{pathQueryId}/SearchTimeline`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
+
+        let urlPath = `/graphql/{pathQueryId}/SearchTimeline`;
+        urlPath = urlPath.replace('{pathQueryId}', encodeURIComponent(String(requestParameters['pathQueryId'])));
+
+        return {
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * search tweet list. product:[Top, Latest, People, Photos, Videos]
+     */
+    async getSearchTimelineRaw(requestParameters: GetSearchTimelineRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SearchTimelineResponse>> {
+        const requestOptions = await this.getSearchTimelineRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => SearchTimelineResponseFromJSON(jsonValue));
     }
@@ -1555,9 +1692,9 @@ export class TweetApi extends runtime.BaseAPI {
     }
 
     /**
-     * get TweetDetail
+     * Creates request options for getTweetDetail without sending the request
      */
-    async getTweetDetailRaw(requestParameters: GetTweetDetailRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TweetDetailResponse>> {
+    async getTweetDetailRequestOpts(requestParameters: GetTweetDetailRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -1686,12 +1823,24 @@ export class TweetApi extends runtime.BaseAPI {
             headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
         }
 
-        const response = await this.request({
-            path: `/graphql/{pathQueryId}/TweetDetail`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
+
+        let urlPath = `/graphql/{pathQueryId}/TweetDetail`;
+        urlPath = urlPath.replace('{pathQueryId}', encodeURIComponent(String(requestParameters['pathQueryId'])));
+
+        return {
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * get TweetDetail
+     */
+    async getTweetDetailRaw(requestParameters: GetTweetDetailRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TweetDetailResponse>> {
+        const requestOptions = await this.getTweetDetailRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => TweetDetailResponseFromJSON(jsonValue));
     }
@@ -1705,9 +1854,9 @@ export class TweetApi extends runtime.BaseAPI {
     }
 
     /**
-     * get user highlights tweets
+     * Creates request options for getUserHighlightsTweets without sending the request
      */
-    async getUserHighlightsTweetsRaw(requestParameters: GetUserHighlightsTweetsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserHighlightsTweetsResponse>> {
+    async getUserHighlightsTweetsRequestOpts(requestParameters: GetUserHighlightsTweetsRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -1836,12 +1985,24 @@ export class TweetApi extends runtime.BaseAPI {
             headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
         }
 
-        const response = await this.request({
-            path: `/graphql/{pathQueryId}/UserHighlightsTweets`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
+
+        let urlPath = `/graphql/{pathQueryId}/UserHighlightsTweets`;
+        urlPath = urlPath.replace('{pathQueryId}', encodeURIComponent(String(requestParameters['pathQueryId'])));
+
+        return {
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * get user highlights tweets
+     */
+    async getUserHighlightsTweetsRaw(requestParameters: GetUserHighlightsTweetsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserHighlightsTweetsResponse>> {
+        const requestOptions = await this.getUserHighlightsTweetsRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UserHighlightsTweetsResponseFromJSON(jsonValue));
     }
@@ -1855,9 +2016,9 @@ export class TweetApi extends runtime.BaseAPI {
     }
 
     /**
-     * get user media tweets
+     * Creates request options for getUserMedia without sending the request
      */
-    async getUserMediaRaw(requestParameters: GetUserMediaRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserTweetsResponse>> {
+    async getUserMediaRequestOpts(requestParameters: GetUserMediaRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -1986,12 +2147,24 @@ export class TweetApi extends runtime.BaseAPI {
             headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
         }
 
-        const response = await this.request({
-            path: `/graphql/{pathQueryId}/UserMedia`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
+
+        let urlPath = `/graphql/{pathQueryId}/UserMedia`;
+        urlPath = urlPath.replace('{pathQueryId}', encodeURIComponent(String(requestParameters['pathQueryId'])));
+
+        return {
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * get user media tweets
+     */
+    async getUserMediaRaw(requestParameters: GetUserMediaRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserTweetsResponse>> {
+        const requestOptions = await this.getUserMediaRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UserTweetsResponseFromJSON(jsonValue));
     }
@@ -2005,9 +2178,9 @@ export class TweetApi extends runtime.BaseAPI {
     }
 
     /**
-     * get user tweets
+     * Creates request options for getUserTweets without sending the request
      */
-    async getUserTweetsRaw(requestParameters: GetUserTweetsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserTweetsResponse>> {
+    async getUserTweetsRequestOpts(requestParameters: GetUserTweetsRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -2136,12 +2309,24 @@ export class TweetApi extends runtime.BaseAPI {
             headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
         }
 
-        const response = await this.request({
-            path: `/graphql/{pathQueryId}/UserTweets`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
+
+        let urlPath = `/graphql/{pathQueryId}/UserTweets`;
+        urlPath = urlPath.replace('{pathQueryId}', encodeURIComponent(String(requestParameters['pathQueryId'])));
+
+        return {
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * get user tweets
+     */
+    async getUserTweetsRaw(requestParameters: GetUserTweetsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserTweetsResponse>> {
+        const requestOptions = await this.getUserTweetsRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UserTweetsResponseFromJSON(jsonValue));
     }
@@ -2155,9 +2340,9 @@ export class TweetApi extends runtime.BaseAPI {
     }
 
     /**
-     * get user replies tweets
+     * Creates request options for getUserTweetsAndReplies without sending the request
      */
-    async getUserTweetsAndRepliesRaw(requestParameters: GetUserTweetsAndRepliesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserTweetsResponse>> {
+    async getUserTweetsAndRepliesRequestOpts(requestParameters: GetUserTweetsAndRepliesRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -2286,12 +2471,24 @@ export class TweetApi extends runtime.BaseAPI {
             headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
         }
 
-        const response = await this.request({
-            path: `/graphql/{pathQueryId}/UserTweetsAndReplies`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
+
+        let urlPath = `/graphql/{pathQueryId}/UserTweetsAndReplies`;
+        urlPath = urlPath.replace('{pathQueryId}', encodeURIComponent(String(requestParameters['pathQueryId'])));
+
+        return {
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * get user replies tweets
+     */
+    async getUserTweetsAndRepliesRaw(requestParameters: GetUserTweetsAndRepliesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserTweetsResponse>> {
+        const requestOptions = await this.getUserTweetsAndRepliesRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UserTweetsResponseFromJSON(jsonValue));
     }

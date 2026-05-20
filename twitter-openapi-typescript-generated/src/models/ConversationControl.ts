@@ -21,7 +21,7 @@ import { mapValues } from '../runtime';
 export interface ConversationControl {
     /**
      * 
-     * @type {string}
+     * @type {ConversationControlModeEnum}
      * @memberof ConversationControl
      */
     mode: ConversationControlModeEnum;

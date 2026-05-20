@@ -21,7 +21,7 @@ import { mapValues } from '../runtime';
 export interface LimitedActionResultsData {
     /**
      * 
-     * @type {string}
+     * @type {LimitedActionResultsDataActionEnum}
      * @memberof LimitedActionResultsData
      */
     action: LimitedActionResultsDataActionEnum;

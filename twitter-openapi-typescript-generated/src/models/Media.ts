@@ -123,6 +123,12 @@ export interface Media {
      * @type {string}
      * @memberof Media
      */
+    grokPostId?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Media
+     */
     idStr: string;
     /**
      * 
@@ -180,7 +186,7 @@ export interface Media {
     sourceUserIdStr?: string;
     /**
      * 
-     * @type {string}
+     * @type {MediaTypeEnum}
      * @memberof Media
      */
     type: MediaTypeEnum;
@@ -245,6 +251,7 @@ export function MediaFromJSONTyped(json: any, ignoreDiscriminator: boolean): Med
         'extAltText': json['ext_alt_text'] == null ? undefined : json['ext_alt_text'],
         'extMediaAvailability': ExtMediaAvailabilityFromJSON(json['ext_media_availability']),
         'features': json['features'] == null ? undefined : json['features'],
+        'grokPostId': json['grok_post_id'] == null ? undefined : json['grok_post_id'],
         'idStr': json['id_str'],
         'indices': json['indices'],
         'mediaKey': json['media_key'],
@@ -279,6 +286,7 @@ export function MediaToJSONTyped(value?: Media | null, ignoreDiscriminator: bool
         'ext_alt_text': value['extAltText'],
         'ext_media_availability': ExtMediaAvailabilityToJSON(value['extMediaAvailability']),
         'features': value['features'],
+        'grok_post_id': value['grokPostId'],
         'id_str': value['idStr'],
         'indices': value['indices'],
         'media_key': value['mediaKey'],

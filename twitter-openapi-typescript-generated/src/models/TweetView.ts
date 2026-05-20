@@ -27,7 +27,7 @@ export interface TweetView {
     count?: string;
     /**
      * 
-     * @type {string}
+     * @type {TweetViewStateEnum}
      * @memberof TweetView
      */
     state: TweetViewStateEnum;

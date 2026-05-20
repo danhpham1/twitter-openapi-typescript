@@ -12,15 +12,12 @@
  * Do not edit the class manually.
  */
 
-
 import * as runtime from '../runtime';
-import type {
-  UsersResponse,
-} from '../models/index';
 import {
+    type UsersResponse,
     UsersResponseFromJSON,
     UsersResponseToJSON,
-} from '../models/index';
+} from '../models/UsersResponse';
 
 export interface GetUsersByRestIdsRequest {
     pathQueryId: string;
@@ -34,9 +31,9 @@ export interface GetUsersByRestIdsRequest {
 export class UsersApi extends runtime.BaseAPI {
 
     /**
-     * get users by rest ids
+     * Creates request options for getUsersByRestIds without sending the request
      */
-    async getUsersByRestIdsRaw(requestParameters: GetUsersByRestIdsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UsersResponse>> {
+    async getUsersByRestIdsRequestOpts(requestParameters: GetUsersByRestIdsRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -154,12 +151,24 @@ export class UsersApi extends runtime.BaseAPI {
             headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
         }
 
-        const response = await this.request({
-            path: `/graphql/{pathQueryId}/UsersByRestIds`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
+
+        let urlPath = `/graphql/{pathQueryId}/UsersByRestIds`;
+        urlPath = urlPath.replace('{pathQueryId}', encodeURIComponent(String(requestParameters['pathQueryId'])));
+
+        return {
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * get users by rest ids
+     */
+    async getUsersByRestIdsRaw(requestParameters: GetUsersByRestIdsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UsersResponse>> {
+        const requestOptions = await this.getUsersByRestIdsRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UsersResponseFromJSON(jsonValue));
     }

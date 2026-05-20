@@ -57,7 +57,7 @@ export function ContentUnionFromJSONTyped(json: any, ignoreDiscriminator: boolea
         case 'TimelineTimelineModule':
             return Object.assign({}, TimelineTimelineModuleFromJSONTyped(json, true), { entryType: 'TimelineTimelineModule' } as const);
         default:
-            throw new Error(`No variant of ContentUnion exists with 'entryType=${json['entryType']}'`);
+            return json;
     }
 }
 
@@ -77,8 +77,7 @@ export function ContentUnionToJSONTyped(value?: ContentUnion | null, ignoreDiscr
         case 'TimelineTimelineModule':
             return Object.assign({}, TimelineTimelineModuleToJSON(value), { entryType: 'TimelineTimelineModule' } as const);
         default:
-            throw new Error(`No variant of ContentUnion exists with 'entryType=${value['entryType']}'`);
+            return value;
     }
-
 }
 

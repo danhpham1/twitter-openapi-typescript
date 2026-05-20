@@ -20,6 +20,13 @@ import {
     ErrorExtensionsToJSON,
     ErrorExtensionsToJSONTyped,
 } from './ErrorExtensions';
+import type { ErrorResponsePathInner } from './ErrorResponsePathInner';
+import {
+    ErrorResponsePathInnerFromJSON,
+    ErrorResponsePathInnerFromJSONTyped,
+    ErrorResponsePathInnerToJSON,
+    ErrorResponsePathInnerToJSONTyped,
+} from './ErrorResponsePathInner';
 import type { Tracing } from './Tracing';
 import {
     TracingFromJSON,
@@ -79,10 +86,10 @@ export interface ErrorResponse {
     name: string;
     /**
      * 
-     * @type {Array<any>}
+     * @type {Array<ErrorResponsePathInner>}
      * @memberof ErrorResponse
      */
-    path: Array<any>;
+    path: Array<ErrorResponsePathInner>;
     /**
      * 
      * @type {number}
@@ -135,7 +142,7 @@ export function ErrorResponseFromJSONTyped(json: any, ignoreDiscriminator: boole
         'locations': ((json['locations'] as Array<any>).map(LocationFromJSON)),
         'message': json['message'],
         'name': json['name'],
-        'path': json['path'],
+        'path': ((json['path'] as Array<any>).map(ErrorResponsePathInnerFromJSON)),
         'retryAfter': json['retry_after'] == null ? undefined : json['retry_after'],
         'source': json['source'],
         'tracing': TracingFromJSON(json['tracing']),
@@ -159,7 +166,7 @@ export function ErrorResponseToJSONTyped(value?: ErrorResponse | null, ignoreDis
         'locations': ((value['locations'] as Array<any>).map(LocationToJSON)),
         'message': value['message'],
         'name': value['name'],
-        'path': value['path'],
+        'path': ((value['path'] as Array<any>).map(ErrorResponsePathInnerToJSON)),
         'retry_after': value['retryAfter'],
         'source': value['source'],
         'tracing': TracingToJSON(value['tracing']),

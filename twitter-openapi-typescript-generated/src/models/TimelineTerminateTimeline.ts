@@ -29,7 +29,7 @@ import {
 export interface TimelineTerminateTimeline {
     /**
      * 
-     * @type {string}
+     * @type {TimelineTerminateTimelineDirectionEnum}
      * @memberof TimelineTerminateTimeline
      */
     direction: TimelineTerminateTimelineDirectionEnum;

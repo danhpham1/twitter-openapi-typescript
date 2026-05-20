@@ -35,6 +35,12 @@ export interface GrokShareAttachmentItem {
     analysisPostIdResults?: AnalysisResults;
     /**
      * 
+     * @type {Array<{ [key: string]: any; }>}
+     * @memberof GrokShareAttachmentItem
+     */
+    deepsearchHeaders?: Array<{ [key: string]: any; }>;
+    /**
+     * 
      * @type {Array<string>}
      * @memberof GrokShareAttachmentItem
      */
@@ -67,6 +73,7 @@ export function GrokShareAttachmentItemFromJSONTyped(json: any, ignoreDiscrimina
     return {
         
         'analysisPostIdResults': json['analysis_post_id_results'] == null ? undefined : AnalysisResultsFromJSON(json['analysis_post_id_results']),
+        'deepsearchHeaders': json['deepsearch_headers'] == null ? undefined : json['deepsearch_headers'],
         'mediaUrls': json['media_urls'],
         'message': json['message'],
     };
@@ -84,6 +91,7 @@ export function GrokShareAttachmentItemToJSONTyped(value?: GrokShareAttachmentIt
     return {
         
         'analysis_post_id_results': AnalysisResultsToJSON(value['analysisPostIdResults']),
+        'deepsearch_headers': value['deepsearchHeaders'],
         'media_urls': value['mediaUrls'],
         'message': value['message'],
     };

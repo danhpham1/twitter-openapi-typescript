@@ -20,6 +20,13 @@ import {
     TypeNameToJSON,
     TypeNameToJSONTyped,
 } from './TypeName';
+import type { UserResultByScreenNameCore } from './UserResultByScreenNameCore';
+import {
+    UserResultByScreenNameCoreFromJSON,
+    UserResultByScreenNameCoreFromJSONTyped,
+    UserResultByScreenNameCoreToJSON,
+    UserResultByScreenNameCoreToJSONTyped,
+} from './UserResultByScreenNameCore';
 import type { UserResultByScreenNameLegacy } from './UserResultByScreenNameLegacy';
 import {
     UserResultByScreenNameLegacyFromJSON,
@@ -27,6 +34,20 @@ import {
     UserResultByScreenNameLegacyToJSON,
     UserResultByScreenNameLegacyToJSONTyped,
 } from './UserResultByScreenNameLegacy';
+import type { UserResultPrivacy } from './UserResultPrivacy';
+import {
+    UserResultPrivacyFromJSON,
+    UserResultPrivacyFromJSONTyped,
+    UserResultPrivacyToJSON,
+    UserResultPrivacyToJSONTyped,
+} from './UserResultPrivacy';
+import type { UserResultRelationshipPerspectives } from './UserResultRelationshipPerspectives';
+import {
+    UserResultRelationshipPerspectivesFromJSON,
+    UserResultRelationshipPerspectivesFromJSONTyped,
+    UserResultRelationshipPerspectivesToJSON,
+    UserResultRelationshipPerspectivesToJSONTyped,
+} from './UserResultRelationshipPerspectives';
 
 /**
  * 
@@ -42,6 +63,12 @@ export interface UserResultByScreenNameResult {
     typename: TypeName;
     /**
      * 
+     * @type {UserResultByScreenNameCore}
+     * @memberof UserResultByScreenNameResult
+     */
+    core: UserResultByScreenNameCore;
+    /**
+     * 
      * @type {string}
      * @memberof UserResultByScreenNameResult
      */
@@ -51,13 +78,25 @@ export interface UserResultByScreenNameResult {
      * @type {UserResultByScreenNameLegacy}
      * @memberof UserResultByScreenNameResult
      */
-    legacy: UserResultByScreenNameLegacy;
+    legacy?: UserResultByScreenNameLegacy;
+    /**
+     * 
+     * @type {UserResultPrivacy}
+     * @memberof UserResultByScreenNameResult
+     */
+    privacy: UserResultPrivacy;
     /**
      * 
      * @type {{ [key: string]: any; }}
      * @memberof UserResultByScreenNameResult
      */
     profilemodules: { [key: string]: any; };
+    /**
+     * 
+     * @type {UserResultRelationshipPerspectives}
+     * @memberof UserResultByScreenNameResult
+     */
+    relationshipPerspectives: UserResultRelationshipPerspectives;
     /**
      * 
      * @type {string}
@@ -73,9 +112,11 @@ export interface UserResultByScreenNameResult {
  */
 export function instanceOfUserResultByScreenNameResult(value: object): value is UserResultByScreenNameResult {
     if (!('typename' in value) || value['typename'] === undefined) return false;
+    if (!('core' in value) || value['core'] === undefined) return false;
     if (!('id' in value) || value['id'] === undefined) return false;
-    if (!('legacy' in value) || value['legacy'] === undefined) return false;
+    if (!('privacy' in value) || value['privacy'] === undefined) return false;
     if (!('profilemodules' in value) || value['profilemodules'] === undefined) return false;
+    if (!('relationshipPerspectives' in value) || value['relationshipPerspectives'] === undefined) return false;
     if (!('restId' in value) || value['restId'] === undefined) return false;
     return true;
 }
@@ -91,9 +132,12 @@ export function UserResultByScreenNameResultFromJSONTyped(json: any, ignoreDiscr
     return {
         
         'typename': TypeNameFromJSON(json['__typename']),
+        'core': UserResultByScreenNameCoreFromJSON(json['core']),
         'id': json['id'],
-        'legacy': UserResultByScreenNameLegacyFromJSON(json['legacy']),
+        'legacy': json['legacy'] == null ? undefined : UserResultByScreenNameLegacyFromJSON(json['legacy']),
+        'privacy': UserResultPrivacyFromJSON(json['privacy']),
         'profilemodules': json['profilemodules'],
+        'relationshipPerspectives': UserResultRelationshipPerspectivesFromJSON(json['relationship_perspectives']),
         'restId': json['rest_id'],
     };
 }
@@ -110,9 +154,12 @@ export function UserResultByScreenNameResultToJSONTyped(value?: UserResultByScre
     return {
         
         '__typename': TypeNameToJSON(value['typename']),
+        'core': UserResultByScreenNameCoreToJSON(value['core']),
         'id': value['id'],
         'legacy': UserResultByScreenNameLegacyToJSON(value['legacy']),
+        'privacy': UserResultPrivacyToJSON(value['privacy']),
         'profilemodules': value['profilemodules'],
+        'relationship_perspectives': UserResultRelationshipPerspectivesToJSON(value['relationshipPerspectives']),
         'rest_id': value['restId'],
     };
 }

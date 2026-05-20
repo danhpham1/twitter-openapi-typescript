@@ -12,15 +12,12 @@
  * Do not edit the class manually.
  */
 
-
 import * as runtime from '../runtime';
-import type {
-  OtherObjectAll,
-} from '../models/index';
 import {
+    type OtherObjectAll,
     OtherObjectAllFromJSON,
     OtherObjectAllToJSON,
-} from '../models/index';
+} from '../models/OtherObjectAll';
 
 /**
  * 
@@ -28,9 +25,9 @@ import {
 export class OtherApi extends runtime.BaseAPI {
 
     /**
-     * This is not an actual endpoint
+     * Creates request options for other without sending the request
      */
-    async otherRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<OtherObjectAll>> {
+    async otherRequestOpts(): Promise<runtime.RequestOpts> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -119,12 +116,23 @@ export class OtherApi extends runtime.BaseAPI {
             headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
         }
 
-        const response = await this.request({
-            path: `/other`,
+
+        let urlPath = `/other`;
+
+        return {
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * This is not an actual endpoint
+     */
+    async otherRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<OtherObjectAll>> {
+        const requestOptions = await this.otherRequestOpts();
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => OtherObjectAllFromJSON(jsonValue));
     }

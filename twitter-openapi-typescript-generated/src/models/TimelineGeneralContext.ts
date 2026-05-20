@@ -42,7 +42,7 @@ export interface TimelineGeneralContext {
     contextImageUrls?: Array<string>;
     /**
      * 
-     * @type {string}
+     * @type {TimelineGeneralContextContextTypeEnum}
      * @memberof TimelineGeneralContext
      */
     contextType?: TimelineGeneralContextContextTypeEnum;

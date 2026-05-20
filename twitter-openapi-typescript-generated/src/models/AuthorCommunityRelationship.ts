@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { CommunityResult } from './CommunityResult';
+import {
+    CommunityResultFromJSON,
+    CommunityResultFromJSONTyped,
+    CommunityResultToJSON,
+    CommunityResultToJSONTyped,
+} from './CommunityResult';
 import type { UserResults } from './UserResults';
 import {
     UserResultsFromJSON,
@@ -20,13 +27,6 @@ import {
     UserResultsToJSON,
     UserResultsToJSONTyped,
 } from './UserResults';
-import type { Community } from './Community';
-import {
-    CommunityFromJSON,
-    CommunityFromJSONTyped,
-    CommunityToJSON,
-    CommunityToJSONTyped,
-} from './Community';
 
 /**
  * 
@@ -36,13 +36,13 @@ import {
 export interface AuthorCommunityRelationship {
     /**
      * 
-     * @type {Community}
+     * @type {CommunityResult}
      * @memberof AuthorCommunityRelationship
      */
-    communityResults: Community;
+    communityResults: CommunityResult;
     /**
      * 
-     * @type {string}
+     * @type {AuthorCommunityRelationshipRoleEnum}
      * @memberof AuthorCommunityRelationship
      */
     role?: AuthorCommunityRelationshipRoleEnum;
@@ -61,7 +61,8 @@ export interface AuthorCommunityRelationship {
 export const AuthorCommunityRelationshipRoleEnum = {
     Member: 'Member',
     Moderator: 'Moderator',
-    Admin: 'Admin'
+    Admin: 'Admin',
+    NonMember: 'NonMember'
 } as const;
 export type AuthorCommunityRelationshipRoleEnum = typeof AuthorCommunityRelationshipRoleEnum[keyof typeof AuthorCommunityRelationshipRoleEnum];
 
@@ -84,7 +85,7 @@ export function AuthorCommunityRelationshipFromJSONTyped(json: any, ignoreDiscri
     }
     return {
         
-        'communityResults': CommunityFromJSON(json['community_results']),
+        'communityResults': CommunityResultFromJSON(json['community_results']),
         'role': json['role'] == null ? undefined : json['role'],
         'userResults': json['user_results'] == null ? undefined : UserResultsFromJSON(json['user_results']),
     };
@@ -101,7 +102,7 @@ export function AuthorCommunityRelationshipToJSONTyped(value?: AuthorCommunityRe
 
     return {
         
-        'community_results': CommunityToJSON(value['communityResults']),
+        'community_results': CommunityResultToJSON(value['communityResults']),
         'role': value['role'],
         'user_results': UserResultsToJSON(value['userResults']),
     };

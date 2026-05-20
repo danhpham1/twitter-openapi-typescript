@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { SuperFollowsReplyUserResultCore } from './SuperFollowsReplyUserResultCore';
+import {
+    SuperFollowsReplyUserResultCoreFromJSON,
+    SuperFollowsReplyUserResultCoreFromJSONTyped,
+    SuperFollowsReplyUserResultCoreToJSON,
+    SuperFollowsReplyUserResultCoreToJSONTyped,
+} from './SuperFollowsReplyUserResultCore';
 import type { TypeName } from './TypeName';
 import {
     TypeNameFromJSON,
@@ -20,13 +27,6 @@ import {
     TypeNameToJSON,
     TypeNameToJSONTyped,
 } from './TypeName';
-import type { SuperFollowsReplyUserResultLegacy } from './SuperFollowsReplyUserResultLegacy';
-import {
-    SuperFollowsReplyUserResultLegacyFromJSON,
-    SuperFollowsReplyUserResultLegacyFromJSONTyped,
-    SuperFollowsReplyUserResultLegacyToJSON,
-    SuperFollowsReplyUserResultLegacyToJSONTyped,
-} from './SuperFollowsReplyUserResultLegacy';
 
 /**
  * 
@@ -42,10 +42,10 @@ export interface SuperFollowsReplyUserResultData {
     typename: TypeName;
     /**
      * 
-     * @type {SuperFollowsReplyUserResultLegacy}
+     * @type {SuperFollowsReplyUserResultCore}
      * @memberof SuperFollowsReplyUserResultData
      */
-    legacy: SuperFollowsReplyUserResultLegacy;
+    core?: SuperFollowsReplyUserResultCore;
 }
 
 
@@ -55,7 +55,6 @@ export interface SuperFollowsReplyUserResultData {
  */
 export function instanceOfSuperFollowsReplyUserResultData(value: object): value is SuperFollowsReplyUserResultData {
     if (!('typename' in value) || value['typename'] === undefined) return false;
-    if (!('legacy' in value) || value['legacy'] === undefined) return false;
     return true;
 }
 
@@ -70,7 +69,7 @@ export function SuperFollowsReplyUserResultDataFromJSONTyped(json: any, ignoreDi
     return {
         
         'typename': TypeNameFromJSON(json['__typename']),
-        'legacy': SuperFollowsReplyUserResultLegacyFromJSON(json['legacy']),
+        'core': json['core'] == null ? undefined : SuperFollowsReplyUserResultCoreFromJSON(json['core']),
     };
 }
 
@@ -86,7 +85,7 @@ export function SuperFollowsReplyUserResultDataToJSONTyped(value?: SuperFollowsR
     return {
         
         '__typename': TypeNameToJSON(value['typename']),
-        'legacy': SuperFollowsReplyUserResultLegacyToJSON(value['legacy']),
+        'core': SuperFollowsReplyUserResultCoreToJSON(value['core']),
     };
 }
 

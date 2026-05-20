@@ -27,7 +27,7 @@ export interface TweetPreviewDisplayCtaUrl {
     url: string;
     /**
      * 
-     * @type {string}
+     * @type {TweetPreviewDisplayCtaUrlUrlTypeEnum}
      * @memberof TweetPreviewDisplayCtaUrl
      */
     urlType: TweetPreviewDisplayCtaUrlUrlTypeEnum;

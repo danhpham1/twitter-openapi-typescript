@@ -55,7 +55,7 @@ export interface TimelineTombstone {
     itemType?: ContentItemType;
     /**
      * 
-     * @type {string}
+     * @type {TimelineTombstoneTombstoneDisplayTypeEnum}
      * @memberof TimelineTombstone
      */
     tombstoneDisplayType?: TimelineTombstoneTombstoneDisplayTypeEnum;

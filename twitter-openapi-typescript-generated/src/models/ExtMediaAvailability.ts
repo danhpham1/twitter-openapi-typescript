@@ -27,7 +27,7 @@ export interface ExtMediaAvailability {
     reason?: string;
     /**
      * 
-     * @type {string}
+     * @type {ExtMediaAvailabilityStatusEnum}
      * @memberof ExtMediaAvailability
      */
     status?: ExtMediaAvailabilityStatusEnum;

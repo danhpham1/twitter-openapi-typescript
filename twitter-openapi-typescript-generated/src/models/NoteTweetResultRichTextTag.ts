@@ -27,7 +27,7 @@ export interface NoteTweetResultRichTextTag {
     fromIndex: number;
     /**
      * 
-     * @type {Array<string>}
+     * @type {Array<NoteTweetResultRichTextTagRichtextTypesEnum>}
      * @memberof NoteTweetResultRichTextTag
      */
     richtextTypes: Array<NoteTweetResultRichTextTagRichtextTypesEnum>;

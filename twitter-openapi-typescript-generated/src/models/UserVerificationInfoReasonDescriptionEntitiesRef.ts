@@ -27,7 +27,7 @@ export interface UserVerificationInfoReasonDescriptionEntitiesRef {
     url: string;
     /**
      * 
-     * @type {string}
+     * @type {UserVerificationInfoReasonDescriptionEntitiesRefUrlTypeEnum}
      * @memberof UserVerificationInfoReasonDescriptionEntitiesRef
      */
     urlType: UserVerificationInfoReasonDescriptionEntitiesRefUrlTypeEnum;

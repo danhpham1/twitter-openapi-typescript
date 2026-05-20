@@ -27,7 +27,7 @@ export interface TimelineCoverBehaviorUrl {
     url: string;
     /**
      * 
-     * @type {string}
+     * @type {TimelineCoverBehaviorUrlUrlTypeEnum}
      * @memberof TimelineCoverBehaviorUrl
      */
     urlType: TimelineCoverBehaviorUrlUrlTypeEnum;

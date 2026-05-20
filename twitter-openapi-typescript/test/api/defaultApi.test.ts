@@ -5,9 +5,9 @@ test('getProfileSpotlightsQuery', async () => {
   logger.log('getProfileSpotlightsQuery');
   const client = await getClient();
   const response = await client.getDefaultApi().getProfileSpotlightsQuery({ screenName: 'elonmusk' });
-  const legacy = response.data.result.legacy;
-  logger.log(legacy.screenName ?? 'undefined');
-  logger.log(`followedBy: ${legacy.followedBy} following: ${legacy.following}`);
+  const result = response.data.result;
+  logger.log(result.core.screenName ?? 'undefined');
+  logger.log(`followedBy: ${result.legacy?.followedBy} following: ${result.legacy?.following}`);
   logger.log('┄'.repeat(50));
   expect(response.raw.response.ok).toBe(true);
 });

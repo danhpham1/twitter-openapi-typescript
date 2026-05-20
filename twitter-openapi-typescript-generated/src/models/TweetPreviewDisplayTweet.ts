@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { ArticlePreview } from './ArticlePreview';
+import {
+    ArticlePreviewFromJSON,
+    ArticlePreviewFromJSONTyped,
+    ArticlePreviewToJSON,
+    ArticlePreviewToJSONTyped,
+} from './ArticlePreview';
 import type { UserResultCore } from './UserResultCore';
 import {
     UserResultCoreFromJSON,
@@ -34,6 +41,12 @@ import {
  * @interface TweetPreviewDisplayTweet
  */
 export interface TweetPreviewDisplayTweet {
+    /**
+     * 
+     * @type {ArticlePreview}
+     * @memberof TweetPreviewDisplayTweet
+     */
+    articlePreview?: ArticlePreview;
     /**
      * 
      * @type {number}
@@ -130,6 +143,7 @@ export function TweetPreviewDisplayTweetFromJSONTyped(json: any, ignoreDiscrimin
     }
     return {
         
+        'articlePreview': json['article_preview'] == null ? undefined : ArticlePreviewFromJSON(json['article_preview']),
         'bookmarkCount': json['bookmark_count'],
         'core': UserResultCoreFromJSON(json['core']),
         'createdAt': json['created_at'],
@@ -155,6 +169,7 @@ export function TweetPreviewDisplayTweetToJSONTyped(value?: TweetPreviewDisplayT
 
     return {
         
+        'article_preview': ArticlePreviewToJSON(value['articlePreview']),
         'bookmark_count': value['bookmarkCount'],
         'core': UserResultCoreToJSON(value['core']),
         'created_at': value['createdAt'],

@@ -29,7 +29,7 @@ import {
 export interface TimelineCoverBehavior {
     /**
      * 
-     * @type {string}
+     * @type {TimelineCoverBehaviorTypeEnum}
      * @memberof TimelineCoverBehavior
      */
     type: TimelineCoverBehaviorTypeEnum;

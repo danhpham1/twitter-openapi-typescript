@@ -21,7 +21,7 @@ import { mapValues } from '../runtime';
 export interface TextEntityRef {
     /**
      * 
-     * @type {string}
+     * @type {TextEntityRefTypeEnum}
      * @memberof TextEntityRef
      */
     type: TextEntityRefTypeEnum;
@@ -33,7 +33,7 @@ export interface TextEntityRef {
     url: string;
     /**
      * 
-     * @type {string}
+     * @type {TextEntityRefUrlTypeEnum}
      * @memberof TextEntityRef
      */
     urlType: TextEntityRefUrlTypeEnum;

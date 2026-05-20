@@ -93,7 +93,7 @@ export interface TimelineTweet {
     socialContext?: SocialContextUnion;
     /**
      * 
-     * @type {string}
+     * @type {TimelineTweetTweetDisplayTypeEnum}
      * @memberof TimelineTweet
      */
     tweetDisplayType: TimelineTweetTweetDisplayTypeEnum;

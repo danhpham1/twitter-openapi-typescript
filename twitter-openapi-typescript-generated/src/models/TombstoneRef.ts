@@ -21,7 +21,7 @@ import { mapValues } from '../runtime';
 export interface TombstoneRef {
     /**
      * 
-     * @type {string}
+     * @type {TombstoneRefTypeEnum}
      * @memberof TombstoneRef
      */
     type?: TombstoneRefTypeEnum;
@@ -33,7 +33,7 @@ export interface TombstoneRef {
     url?: string;
     /**
      * 
-     * @type {string}
+     * @type {TombstoneRefUrlTypeEnum}
      * @memberof TombstoneRef
      */
     urlType?: TombstoneRefUrlTypeEnum;

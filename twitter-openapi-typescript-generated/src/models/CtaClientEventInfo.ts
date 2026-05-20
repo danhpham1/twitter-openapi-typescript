@@ -21,7 +21,7 @@ import { mapValues } from '../runtime';
 export interface CtaClientEventInfo {
     /**
      * 
-     * @type {string}
+     * @type {CtaClientEventInfoActionEnum}
      * @memberof CtaClientEventInfo
      */
     action: CtaClientEventInfoActionEnum;

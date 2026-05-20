@@ -12,7 +12,6 @@
  * Do not edit the class manually.
  */
 
-
 import * as runtime from '../runtime';
 
 export interface GetFriendsFollowingListRequest {
@@ -50,9 +49,9 @@ export interface GetSearchTypeaheadRequest {
 export class V11GetApi extends runtime.BaseAPI {
 
     /**
-     * get friends following list
+     * Creates request options for getFriendsFollowingList without sending the request
      */
-    async getFriendsFollowingListRaw(requestParameters: GetFriendsFollowingListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    async getFriendsFollowingListRequestOpts(requestParameters: GetFriendsFollowingListRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['includeProfileInterstitialType'] == null) {
             throw new runtime.RequiredError(
                 'includeProfileInterstitialType',
@@ -328,12 +327,23 @@ export class V11GetApi extends runtime.BaseAPI {
             headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
         }
 
-        const response = await this.request({
-            path: `/1.1/friends/following/list.json`,
+
+        let urlPath = `/1.1/friends/following/list.json`;
+
+        return {
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * get friends following list
+     */
+    async getFriendsFollowingListRaw(requestParameters: GetFriendsFollowingListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        const requestOptions = await this.getFriendsFollowingListRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.VoidApiResponse(response);
     }
@@ -346,9 +356,9 @@ export class V11GetApi extends runtime.BaseAPI {
     }
 
     /**
-     * get search typeahead
+     * Creates request options for getSearchTypeahead without sending the request
      */
-    async getSearchTypeaheadRaw(requestParameters: GetSearchTypeaheadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    async getSearchTypeaheadRequestOpts(requestParameters: GetSearchTypeaheadRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['includeExtIsBlueVerified'] == null) {
             throw new runtime.RequiredError(
                 'includeExtIsBlueVerified',
@@ -503,12 +513,23 @@ export class V11GetApi extends runtime.BaseAPI {
             headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
         }
 
-        const response = await this.request({
-            path: `/1.1/search/typeahead.json`,
+
+        let urlPath = `/1.1/search/typeahead.json`;
+
+        return {
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * get search typeahead
+     */
+    async getSearchTypeaheadRaw(requestParameters: GetSearchTypeaheadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        const requestOptions = await this.getSearchTypeaheadRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.VoidApiResponse(response);
     }

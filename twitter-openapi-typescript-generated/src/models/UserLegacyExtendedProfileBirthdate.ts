@@ -33,7 +33,7 @@ export interface UserLegacyExtendedProfileBirthdate {
     month: number;
     /**
      * 
-     * @type {string}
+     * @type {UserLegacyExtendedProfileBirthdateVisibilityEnum}
      * @memberof UserLegacyExtendedProfileBirthdate
      */
     visibility: UserLegacyExtendedProfileBirthdateVisibilityEnum;
@@ -45,7 +45,7 @@ export interface UserLegacyExtendedProfileBirthdate {
     year?: number;
     /**
      * 
-     * @type {string}
+     * @type {UserLegacyExtendedProfileBirthdateYearVisibilityEnum}
      * @memberof UserLegacyExtendedProfileBirthdate
      */
     yearVisibility: UserLegacyExtendedProfileBirthdateYearVisibilityEnum;

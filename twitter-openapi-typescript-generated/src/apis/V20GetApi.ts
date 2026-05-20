@@ -12,7 +12,6 @@
  * Do not edit the class manually.
  */
 
-
 import * as runtime from '../runtime';
 
 export interface GetSearchAdaptiveRequest {
@@ -61,9 +60,9 @@ export interface GetSearchAdaptiveRequest {
 export class V20GetApi extends runtime.BaseAPI {
 
     /**
-     * get search adaptive
+     * Creates request options for getSearchAdaptive without sending the request
      */
-    async getSearchAdaptiveRaw(requestParameters: GetSearchAdaptiveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    async getSearchAdaptiveRequestOpts(requestParameters: GetSearchAdaptiveRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['includeProfileInterstitialType'] == null) {
             throw new runtime.RequiredError(
                 'includeProfileInterstitialType',
@@ -559,12 +558,23 @@ export class V20GetApi extends runtime.BaseAPI {
             headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
         }
 
-        const response = await this.request({
-            path: `/2/search/adaptive.json`,
+
+        let urlPath = `/2/search/adaptive.json`;
+
+        return {
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * get search adaptive
+     */
+    async getSearchAdaptiveRaw(requestParameters: GetSearchAdaptiveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        const requestOptions = await this.getSearchAdaptiveRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.VoidApiResponse(response);
     }

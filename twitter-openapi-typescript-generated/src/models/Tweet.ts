@@ -20,6 +20,13 @@ import {
     NoteTweetToJSON,
     NoteTweetToJSONTyped,
 } from './NoteTweet';
+import type { ContentDisclosure } from './ContentDisclosure';
+import {
+    ContentDisclosureFromJSON,
+    ContentDisclosureFromJSONTyped,
+    ContentDisclosureToJSON,
+    ContentDisclosureToJSONTyped,
+} from './ContentDisclosure';
 import type { TypeName } from './TypeName';
 import {
     TypeNameFromJSON,
@@ -97,6 +104,13 @@ import {
     TweetViewToJSON,
     TweetViewToJSONTyped,
 } from './TweetView';
+import type { GrokAnnotation } from './GrokAnnotation';
+import {
+    GrokAnnotationFromJSON,
+    GrokAnnotationFromJSONTyped,
+    GrokAnnotationToJSON,
+    GrokAnnotationToJSONTyped,
+} from './GrokAnnotation';
 import type { TweetCard } from './TweetCard';
 import {
     TweetCardFromJSON,
@@ -104,6 +118,13 @@ import {
     TweetCardToJSON,
     TweetCardToJSONTyped,
 } from './TweetCard';
+import type { CommunityResult } from './CommunityResult';
+import {
+    CommunityResultFromJSON,
+    CommunityResultFromJSONTyped,
+    CommunityResultToJSON,
+    CommunityResultToJSONTyped,
+} from './CommunityResult';
 import type { AuthorCommunityRelationship } from './AuthorCommunityRelationship';
 import {
     AuthorCommunityRelationshipFromJSON,
@@ -111,6 +132,13 @@ import {
     AuthorCommunityRelationshipToJSON,
     AuthorCommunityRelationshipToJSONTyped,
 } from './AuthorCommunityRelationship';
+import type { GrokTranslatedPostWithAvailability } from './GrokTranslatedPostWithAvailability';
+import {
+    GrokTranslatedPostWithAvailabilityFromJSON,
+    GrokTranslatedPostWithAvailabilityFromJSONTyped,
+    GrokTranslatedPostWithAvailabilityToJSON,
+    GrokTranslatedPostWithAvailabilityToJSONTyped,
+} from './GrokTranslatedPostWithAvailability';
 import type { UnifiedCard } from './UnifiedCard';
 import {
     UnifiedCardFromJSON,
@@ -146,13 +174,13 @@ import {
     TweetLegacyToJSON,
     TweetLegacyToJSONTyped,
 } from './TweetLegacy';
-import type { Community } from './Community';
+import type { TweetPostCta } from './TweetPostCta';
 import {
-    CommunityFromJSON,
-    CommunityFromJSONTyped,
-    CommunityToJSON,
-    CommunityToJSONTyped,
-} from './Community';
+    TweetPostCtaFromJSON,
+    TweetPostCtaFromJSONTyped,
+    TweetPostCtaToJSON,
+    TweetPostCtaToJSONTyped,
+} from './TweetPostCta';
 
 /**
  * 
@@ -198,10 +226,16 @@ export interface Tweet {
     communityRelationship?: CommunityRelationship;
     /**
      * 
-     * @type {Community}
+     * @type {CommunityResult}
      * @memberof Tweet
      */
-    communityResults?: Community;
+    communityResults?: CommunityResult;
+    /**
+     * 
+     * @type {ContentDisclosure}
+     * @memberof Tweet
+     */
+    contentDisclosure?: ContentDisclosure;
     /**
      * 
      * @type {UserResultCore}
@@ -234,10 +268,22 @@ export interface Tweet {
     grokAnalysisFollowups?: Array<string>;
     /**
      * 
+     * @type {GrokAnnotation}
+     * @memberof Tweet
+     */
+    grokAnnotations?: GrokAnnotation;
+    /**
+     * 
      * @type {GrokShareAttachment}
      * @memberof Tweet
      */
     grokShareAttachment?: GrokShareAttachment;
+    /**
+     * 
+     * @type {GrokTranslatedPostWithAvailability}
+     * @memberof Tweet
+     */
+    grokTranslatedPostWithAvailability?: GrokTranslatedPostWithAvailability;
     /**
      * 
      * @type {boolean}
@@ -262,6 +308,24 @@ export interface Tweet {
      * @memberof Tweet
      */
     noteTweet?: NoteTweet;
+    /**
+     * 
+     * @type {TweetPostCta}
+     * @memberof Tweet
+     */
+    postCta?: TweetPostCta;
+    /**
+     * 
+     * @type {string}
+     * @memberof Tweet
+     */
+    postImageDescription?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Tweet
+     */
+    postVideoDescription?: string;
     /**
      * 
      * @type {TweetPreviousCounts}
@@ -356,17 +420,23 @@ export function TweetFromJSONTyped(json: any, ignoreDiscriminator: boolean): Twe
         'birdwatchPivot': json['birdwatch_pivot'] == null ? undefined : BirdwatchPivotFromJSON(json['birdwatch_pivot']),
         'card': json['card'] == null ? undefined : TweetCardFromJSON(json['card']),
         'communityRelationship': json['community_relationship'] == null ? undefined : CommunityRelationshipFromJSON(json['community_relationship']),
-        'communityResults': json['community_results'] == null ? undefined : CommunityFromJSON(json['community_results']),
+        'communityResults': json['community_results'] == null ? undefined : CommunityResultFromJSON(json['community_results']),
+        'contentDisclosure': json['content_disclosure'] == null ? undefined : ContentDisclosureFromJSON(json['content_disclosure']),
         'core': json['core'] == null ? undefined : UserResultCoreFromJSON(json['core']),
         'editControl': json['edit_control'] == null ? undefined : TweetEditControlFromJSON(json['edit_control']),
         'editPrespective': json['edit_prespective'] == null ? undefined : TweetEditPrespectiveFromJSON(json['edit_prespective']),
         'grokAnalysisButton': json['grok_analysis_button'] == null ? undefined : json['grok_analysis_button'],
         'grokAnalysisFollowups': json['grok_analysis_followups'] == null ? undefined : json['grok_analysis_followups'],
+        'grokAnnotations': json['grok_annotations'] == null ? undefined : GrokAnnotationFromJSON(json['grok_annotations']),
         'grokShareAttachment': json['grok_share_attachment'] == null ? undefined : GrokShareAttachmentFromJSON(json['grok_share_attachment']),
+        'grokTranslatedPostWithAvailability': json['grok_translated_post_with_availability'] == null ? undefined : GrokTranslatedPostWithAvailabilityFromJSON(json['grok_translated_post_with_availability']),
         'hasBirdwatchNotes': json['has_birdwatch_notes'] == null ? undefined : json['has_birdwatch_notes'],
         'isTranslatable': json['is_translatable'] == null ? undefined : json['is_translatable'],
         'legacy': json['legacy'] == null ? undefined : TweetLegacyFromJSON(json['legacy']),
         'noteTweet': json['note_tweet'] == null ? undefined : NoteTweetFromJSON(json['note_tweet']),
+        'postCta': json['postCta'] == null ? undefined : TweetPostCtaFromJSON(json['postCta']),
+        'postImageDescription': json['post_image_description'] == null ? undefined : json['post_image_description'],
+        'postVideoDescription': json['post_video_description'] == null ? undefined : json['post_video_description'],
         'previousCounts': json['previous_counts'] == null ? undefined : TweetPreviousCountsFromJSON(json['previous_counts']),
         'quickPromoteEligibility': json['quick_promote_eligibility'] == null ? undefined : json['quick_promote_eligibility'],
         'quotedRefResult': json['quotedRefResult'] == null ? undefined : QuotedRefResultFromJSON(json['quotedRefResult']),
@@ -398,17 +468,23 @@ export function TweetToJSONTyped(value?: Tweet | null, ignoreDiscriminator: bool
         'birdwatch_pivot': BirdwatchPivotToJSON(value['birdwatchPivot']),
         'card': TweetCardToJSON(value['card']),
         'community_relationship': CommunityRelationshipToJSON(value['communityRelationship']),
-        'community_results': CommunityToJSON(value['communityResults']),
+        'community_results': CommunityResultToJSON(value['communityResults']),
+        'content_disclosure': ContentDisclosureToJSON(value['contentDisclosure']),
         'core': UserResultCoreToJSON(value['core']),
         'edit_control': TweetEditControlToJSON(value['editControl']),
         'edit_prespective': TweetEditPrespectiveToJSON(value['editPrespective']),
         'grok_analysis_button': value['grokAnalysisButton'],
         'grok_analysis_followups': value['grokAnalysisFollowups'],
+        'grok_annotations': GrokAnnotationToJSON(value['grokAnnotations']),
         'grok_share_attachment': GrokShareAttachmentToJSON(value['grokShareAttachment']),
+        'grok_translated_post_with_availability': GrokTranslatedPostWithAvailabilityToJSON(value['grokTranslatedPostWithAvailability']),
         'has_birdwatch_notes': value['hasBirdwatchNotes'],
         'is_translatable': value['isTranslatable'],
         'legacy': TweetLegacyToJSON(value['legacy']),
         'note_tweet': NoteTweetToJSON(value['noteTweet']),
+        'postCta': TweetPostCtaToJSON(value['postCta']),
+        'post_image_description': value['postImageDescription'],
+        'post_video_description': value['postVideoDescription'],
         'previous_counts': TweetPreviousCountsToJSON(value['previousCounts']),
         'quick_promote_eligibility': value['quickPromoteEligibility'],
         'quotedRefResult': QuotedRefResultToJSON(value['quotedRefResult']),

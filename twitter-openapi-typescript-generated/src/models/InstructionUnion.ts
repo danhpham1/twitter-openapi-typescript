@@ -120,7 +120,7 @@ export function InstructionUnionFromJSONTyped(json: any, ignoreDiscriminator: bo
         case 'TimelineTerminateTimeline':
             return Object.assign({}, TimelineTerminateTimelineFromJSONTyped(json, true), { type: 'TimelineTerminateTimeline' } as const);
         default:
-            throw new Error(`No variant of InstructionUnion exists with 'type=${json['type']}'`);
+            return json;
     }
 }
 
@@ -154,8 +154,7 @@ export function InstructionUnionToJSONTyped(value?: InstructionUnion | null, ign
         case 'TimelineTerminateTimeline':
             return Object.assign({}, TimelineTerminateTimelineToJSON(value), { type: 'TimelineTerminateTimeline' } as const);
         default:
-            throw new Error(`No variant of InstructionUnion exists with 'type=${value['type']}'`);
+            return value;
     }
-
 }
 

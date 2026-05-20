@@ -130,6 +130,12 @@ export interface MediaExtended {
      * @type {string}
      * @memberof MediaExtended
      */
+    grokPostId?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof MediaExtended
+     */
     idStr: string;
     /**
      * 
@@ -193,7 +199,7 @@ export interface MediaExtended {
     sourceUserIdStr?: string;
     /**
      * 
-     * @type {string}
+     * @type {MediaExtendedTypeEnum}
      * @memberof MediaExtended
      */
     type: MediaExtendedTypeEnum;
@@ -257,6 +263,7 @@ export function MediaExtendedFromJSONTyped(json: any, ignoreDiscriminator: boole
         'extAltText': json['ext_alt_text'] == null ? undefined : json['ext_alt_text'],
         'extMediaAvailability': json['ext_media_availability'] == null ? undefined : ExtMediaAvailabilityFromJSON(json['ext_media_availability']),
         'features': json['features'] == null ? undefined : json['features'],
+        'grokPostId': json['grok_post_id'] == null ? undefined : json['grok_post_id'],
         'idStr': json['id_str'],
         'indices': json['indices'],
         'mediaStats': json['mediaStats'] == null ? undefined : MediaStatsFromJSON(json['mediaStats']),
@@ -292,6 +299,7 @@ export function MediaExtendedToJSONTyped(value?: MediaExtended | null, ignoreDis
         'ext_alt_text': value['extAltText'],
         'ext_media_availability': ExtMediaAvailabilityToJSON(value['extMediaAvailability']),
         'features': value['features'],
+        'grok_post_id': value['grokPostId'],
         'id_str': value['idStr'],
         'indices': value['indices'],
         'mediaStats': MediaStatsToJSON(value['mediaStats']),

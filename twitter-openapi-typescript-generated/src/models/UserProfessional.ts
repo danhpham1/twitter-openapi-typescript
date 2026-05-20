@@ -32,10 +32,10 @@ export interface UserProfessional {
      * @type {Array<UserProfessionalCategory>}
      * @memberof UserProfessional
      */
-    category: Array<UserProfessionalCategory>;
+    category?: Array<UserProfessionalCategory>;
     /**
      * 
-     * @type {string}
+     * @type {UserProfessionalProfessionalTypeEnum}
      * @memberof UserProfessional
      */
     professionalType: UserProfessionalProfessionalTypeEnum;
@@ -62,7 +62,6 @@ export type UserProfessionalProfessionalTypeEnum = typeof UserProfessionalProfes
  * Check if a given object implements the UserProfessional interface.
  */
 export function instanceOfUserProfessional(value: object): value is UserProfessional {
-    if (!('category' in value) || value['category'] === undefined) return false;
     if (!('professionalType' in value) || value['professionalType'] === undefined) return false;
     if (!('restId' in value) || value['restId'] === undefined) return false;
     return true;
@@ -78,7 +77,7 @@ export function UserProfessionalFromJSONTyped(json: any, ignoreDiscriminator: bo
     }
     return {
         
-        'category': ((json['category'] as Array<any>).map(UserProfessionalCategoryFromJSON)),
+        'category': json['category'] == null ? undefined : ((json['category'] as Array<any>).map(UserProfessionalCategoryFromJSON)),
         'professionalType': json['professional_type'],
         'restId': json['rest_id'],
     };
@@ -95,7 +94,7 @@ export function UserProfessionalToJSONTyped(value?: UserProfessional | null, ign
 
     return {
         
-        'category': ((value['category'] as Array<any>).map(UserProfessionalCategoryToJSON)),
+        'category': value['category'] == null ? undefined : ((value['category'] as Array<any>).map(UserProfessionalCategoryToJSON)),
         'professional_type': value['professionalType'],
         'rest_id': value['restId'],
     };

@@ -32,7 +32,7 @@ export interface NoteTweet {
      * @type {boolean}
      * @memberof NoteTweet
      */
-    isExpandable: boolean;
+    isExpandable?: boolean;
     /**
      * 
      * @type {NoteTweetResult}
@@ -45,7 +45,6 @@ export interface NoteTweet {
  * Check if a given object implements the NoteTweet interface.
  */
 export function instanceOfNoteTweet(value: object): value is NoteTweet {
-    if (!('isExpandable' in value) || value['isExpandable'] === undefined) return false;
     if (!('noteTweetResults' in value) || value['noteTweetResults'] === undefined) return false;
     return true;
 }
@@ -60,7 +59,7 @@ export function NoteTweetFromJSONTyped(json: any, ignoreDiscriminator: boolean):
     }
     return {
         
-        'isExpandable': json['is_expandable'],
+        'isExpandable': json['is_expandable'] == null ? undefined : json['is_expandable'],
         'noteTweetResults': NoteTweetResultFromJSON(json['note_tweet_results']),
     };
 }

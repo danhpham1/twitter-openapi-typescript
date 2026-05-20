@@ -68,7 +68,7 @@ export interface TimelineUser {
     socialContext?: SocialContextUnion;
     /**
      * 
-     * @type {string}
+     * @type {TimelineUserUserDisplayTypeEnum}
      * @memberof TimelineUser
      */
     userDisplayType: TimelineUserUserDisplayTypeEnum;
