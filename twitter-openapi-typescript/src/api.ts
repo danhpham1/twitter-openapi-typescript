@@ -17,7 +17,7 @@ import { generateTransactionId } from 'x-client-transaction-id-generater';
 import { InitOverridesType } from './utils';
 
 export class TwitterOpenApi {
-  static hash = 'c28f41918c01fdd8e133d9a509765b4e1c5be5cc';
+  static hash = '590dae5c9f8575abc91d3774946bfe6f23960aba';
   static url = `https://raw.githubusercontent.com/fa0311/twitter-openapi/${this.hash}/src/config/placeholder.json`;
   static header = 'https://raw.githubusercontent.com/fa0311/latest-user-agent/refs/heads/main/header.json';
   static twitter = 'https://x.com/home';
