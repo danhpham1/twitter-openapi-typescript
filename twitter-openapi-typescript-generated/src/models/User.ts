@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { UserRelationshipPerspectives } from './UserRelationshipPerspectives';
+import {
+    UserRelationshipPerspectivesFromJSON,
+    UserRelationshipPerspectivesFromJSONTyped,
+    UserRelationshipPerspectivesToJSON,
+    UserRelationshipPerspectivesToJSONTyped,
+} from './UserRelationshipPerspectives';
 import type { UserHighlightsInfo } from './UserHighlightsInfo';
 import {
     UserHighlightsInfoFromJSON,
@@ -27,20 +34,20 @@ import {
     TypeNameToJSON,
     TypeNameToJSONTyped,
 } from './TypeName';
-import type { UserVerificationInfo } from './UserVerificationInfo';
+import type { UserProfile } from './UserProfile';
 import {
-    UserVerificationInfoFromJSON,
-    UserVerificationInfoFromJSONTyped,
-    UserVerificationInfoToJSON,
-    UserVerificationInfoToJSONTyped,
-} from './UserVerificationInfo';
-import type { UserLegacy } from './UserLegacy';
+    UserProfileFromJSON,
+    UserProfileFromJSONTyped,
+    UserProfileToJSON,
+    UserProfileToJSONTyped,
+} from './UserProfile';
+import type { ProfileBio } from './ProfileBio';
 import {
-    UserLegacyFromJSON,
-    UserLegacyFromJSONTyped,
-    UserLegacyToJSON,
-    UserLegacyToJSONTyped,
-} from './UserLegacy';
+    ProfileBioFromJSON,
+    ProfileBioFromJSONTyped,
+    ProfileBioToJSON,
+    ProfileBioToJSONTyped,
+} from './ProfileBio';
 import type { UserLegacyExtendedProfile } from './UserLegacyExtendedProfile';
 import {
     UserLegacyExtendedProfileFromJSON,
@@ -55,6 +62,62 @@ import {
     UserTipJarSettingsToJSON,
     UserTipJarSettingsToJSONTyped,
 } from './UserTipJarSettings';
+import type { UserVerification } from './UserVerification';
+import {
+    UserVerificationFromJSON,
+    UserVerificationFromJSONTyped,
+    UserVerificationToJSON,
+    UserVerificationToJSONTyped,
+} from './UserVerification';
+import type { UserAvatar } from './UserAvatar';
+import {
+    UserAvatarFromJSON,
+    UserAvatarFromJSONTyped,
+    UserAvatarToJSON,
+    UserAvatarToJSONTyped,
+} from './UserAvatar';
+import type { UserPrivacy } from './UserPrivacy';
+import {
+    UserPrivacyFromJSON,
+    UserPrivacyFromJSONTyped,
+    UserPrivacyToJSON,
+    UserPrivacyToJSONTyped,
+} from './UserPrivacy';
+import type { UserVerificationInfo } from './UserVerificationInfo';
+import {
+    UserVerificationInfoFromJSON,
+    UserVerificationInfoFromJSONTyped,
+    UserVerificationInfoToJSON,
+    UserVerificationInfoToJSONTyped,
+} from './UserVerificationInfo';
+import type { UserLocation } from './UserLocation';
+import {
+    UserLocationFromJSON,
+    UserLocationFromJSONTyped,
+    UserLocationToJSON,
+    UserLocationToJSONTyped,
+} from './UserLocation';
+import type { UserLegacy } from './UserLegacy';
+import {
+    UserLegacyFromJSON,
+    UserLegacyFromJSONTyped,
+    UserLegacyToJSON,
+    UserLegacyToJSONTyped,
+} from './UserLegacy';
+import type { UserCore } from './UserCore';
+import {
+    UserCoreFromJSON,
+    UserCoreFromJSONTyped,
+    UserCoreToJSON,
+    UserCoreToJSONTyped,
+} from './UserCore';
+import type { UserMediaPermissions } from './UserMediaPermissions';
+import {
+    UserMediaPermissionsFromJSON,
+    UserMediaPermissionsFromJSONTyped,
+    UserMediaPermissionsToJSON,
+    UserMediaPermissionsToJSONTyped,
+} from './UserMediaPermissions';
 import type { UserProfessional } from './UserProfessional';
 import {
     UserProfessionalFromJSON,
@@ -62,6 +125,13 @@ import {
     UserProfessionalToJSON,
     UserProfessionalToJSONTyped,
 } from './UserProfessional';
+import type { UserDmPermissions } from './UserDmPermissions';
+import {
+    UserDmPermissionsFromJSON,
+    UserDmPermissionsFromJSONTyped,
+    UserDmPermissionsToJSON,
+    UserDmPermissionsToJSONTyped,
+} from './UserDmPermissions';
 
 /**
  * 
@@ -83,16 +153,34 @@ export interface User {
     affiliatesHighlightedLabel?: { [key: string]: any; };
     /**
      * 
+     * @type {UserAvatar}
+     * @memberof User
+     */
+    avatar?: UserAvatar;
+    /**
+     * 
      * @type {{ [key: string]: any; }}
      * @memberof User
      */
     businessAccount?: { [key: string]: any; };
     /**
      * 
+     * @type {UserCore}
+     * @memberof User
+     */
+    core?: UserCore;
+    /**
+     * 
      * @type {number}
      * @memberof User
      */
     creatorSubscriptionsCount?: number;
+    /**
+     * 
+     * @type {UserDmPermissions}
+     * @memberof User
+     */
+    dmPermissions?: UserDmPermissions;
     /**
      * 
      * @type {boolean}
@@ -155,6 +243,18 @@ export interface User {
     legacyExtendedProfile?: UserLegacyExtendedProfile;
     /**
      * 
+     * @type {UserLocation}
+     * @memberof User
+     */
+    location?: UserLocation;
+    /**
+     * 
+     * @type {UserMediaPermissions}
+     * @memberof User
+     */
+    mediaPermissions?: UserMediaPermissions;
+    /**
+     * 
      * @type {UserParodyCommentaryFanLabelEnum}
      * @memberof User
      */
@@ -167,16 +267,46 @@ export interface User {
     premiumGiftingEligible?: boolean;
     /**
      * 
+     * @type {UserPrivacy}
+     * @memberof User
+     */
+    privacy?: UserPrivacy;
+    /**
+     * 
      * @type {UserProfessional}
      * @memberof User
      */
     professional?: UserProfessional;
     /**
      * 
+     * @type {ProfileBio}
+     * @memberof User
+     */
+    profileBio?: ProfileBio;
+    /**
+     * 
+     * @type {string}
+     * @memberof User
+     */
+    profileDescriptionLanguage?: string;
+    /**
+     * 
      * @type {UserProfileImageShapeEnum}
      * @memberof User
      */
     profileImageShape: UserProfileImageShapeEnum;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof User
+     */
+    profileSortEnabled?: boolean;
+    /**
+     * 
+     * @type {UserRelationshipPerspectives}
+     * @memberof User
+     */
+    relationshipPerspectives?: UserRelationshipPerspectives;
     /**
      * 
      * @type {string}
@@ -203,6 +333,12 @@ export interface User {
     superFollowing?: boolean;
     /**
      * 
+     * @type {UserProfile}
+     * @memberof User
+     */
+    superFollowsUserProfile?: UserProfile;
+    /**
+     * 
      * @type {UserTipJarSettings}
      * @memberof User
      */
@@ -215,10 +351,22 @@ export interface User {
     userSeedTweetCount?: number;
     /**
      * 
+     * @type {UserVerification}
+     * @memberof User
+     */
+    verification?: UserVerification;
+    /**
+     * 
      * @type {UserVerificationInfo}
      * @memberof User
      */
     verificationInfo?: UserVerificationInfo;
+    /**
+     * 
+     * @type {UserProfile}
+     * @memberof User
+     */
+    verifiedUserProfiles?: UserProfile;
 }
 
 
@@ -228,7 +376,8 @@ export interface User {
 export const UserParodyCommentaryFanLabelEnum = {
     None: 'None',
     Parody: 'Parody',
-    Commentary: 'Commentary'
+    Commentary: 'Commentary',
+    Fan: 'Fan'
 } as const;
 export type UserParodyCommentaryFanLabelEnum = typeof UserParodyCommentaryFanLabelEnum[keyof typeof UserParodyCommentaryFanLabelEnum];
 
@@ -268,8 +417,11 @@ export function UserFromJSONTyped(json: any, ignoreDiscriminator: boolean): User
         
         'typename': TypeNameFromJSON(json['__typename']),
         'affiliatesHighlightedLabel': json['affiliates_highlighted_label'] == null ? undefined : json['affiliates_highlighted_label'],
+        'avatar': json['avatar'] == null ? undefined : UserAvatarFromJSON(json['avatar']),
         'businessAccount': json['business_account'] == null ? undefined : json['business_account'],
+        'core': json['core'] == null ? undefined : UserCoreFromJSON(json['core']),
         'creatorSubscriptionsCount': json['creator_subscriptions_count'] == null ? undefined : json['creator_subscriptions_count'],
+        'dmPermissions': json['dm_permissions'] == null ? undefined : UserDmPermissionsFromJSON(json['dm_permissions']),
         'hasGraduatedAccess': json['has_graduated_access'] == null ? undefined : json['has_graduated_access'],
         'hasHiddenLikesOnProfile': json['has_hidden_likes_on_profile'] == null ? undefined : json['has_hidden_likes_on_profile'],
         'hasHiddenSubscriptionsOnProfile': json['has_hidden_subscriptions_on_profile'] == null ? undefined : json['has_hidden_subscriptions_on_profile'],
@@ -280,17 +432,27 @@ export function UserFromJSONTyped(json: any, ignoreDiscriminator: boolean): User
         'isProfileTranslatable': json['is_profile_translatable'] == null ? undefined : json['is_profile_translatable'],
         'legacy': UserLegacyFromJSON(json['legacy']),
         'legacyExtendedProfile': json['legacy_extended_profile'] == null ? undefined : UserLegacyExtendedProfileFromJSON(json['legacy_extended_profile']),
+        'location': json['location'] == null ? undefined : UserLocationFromJSON(json['location']),
+        'mediaPermissions': json['media_permissions'] == null ? undefined : UserMediaPermissionsFromJSON(json['media_permissions']),
         'parodyCommentaryFanLabel': json['parody_commentary_fan_label'] == null ? undefined : json['parody_commentary_fan_label'],
         'premiumGiftingEligible': json['premium_gifting_eligible'] == null ? undefined : json['premium_gifting_eligible'],
+        'privacy': json['privacy'] == null ? undefined : UserPrivacyFromJSON(json['privacy']),
         'professional': json['professional'] == null ? undefined : UserProfessionalFromJSON(json['professional']),
+        'profileBio': json['profile_bio'] == null ? undefined : ProfileBioFromJSON(json['profile_bio']),
+        'profileDescriptionLanguage': json['profile_description_language'] == null ? undefined : json['profile_description_language'],
         'profileImageShape': json['profile_image_shape'],
+        'profileSortEnabled': json['profile_sort_enabled'] == null ? undefined : json['profile_sort_enabled'],
+        'relationshipPerspectives': json['relationship_perspectives'] == null ? undefined : UserRelationshipPerspectivesFromJSON(json['relationship_perspectives']),
         'restId': json['rest_id'],
         'superFollowEligible': json['super_follow_eligible'] == null ? undefined : json['super_follow_eligible'],
         'superFollowedBy': json['super_followed_by'] == null ? undefined : json['super_followed_by'],
         'superFollowing': json['super_following'] == null ? undefined : json['super_following'],
+        'superFollowsUserProfile': json['super_follows_user_profile'] == null ? undefined : UserProfileFromJSON(json['super_follows_user_profile']),
         'tipjarSettings': json['tipjar_settings'] == null ? undefined : UserTipJarSettingsFromJSON(json['tipjar_settings']),
         'userSeedTweetCount': json['user_seed_tweet_count'] == null ? undefined : json['user_seed_tweet_count'],
+        'verification': json['verification'] == null ? undefined : UserVerificationFromJSON(json['verification']),
         'verificationInfo': json['verification_info'] == null ? undefined : UserVerificationInfoFromJSON(json['verification_info']),
+        'verifiedUserProfiles': json['verified_user_profiles'] == null ? undefined : UserProfileFromJSON(json['verified_user_profiles']),
     };
 }
 
@@ -307,8 +469,11 @@ export function UserToJSONTyped(value?: User | null, ignoreDiscriminator: boolea
         
         '__typename': TypeNameToJSON(value['typename']),
         'affiliates_highlighted_label': value['affiliatesHighlightedLabel'],
+        'avatar': UserAvatarToJSON(value['avatar']),
         'business_account': value['businessAccount'],
+        'core': UserCoreToJSON(value['core']),
         'creator_subscriptions_count': value['creatorSubscriptionsCount'],
+        'dm_permissions': UserDmPermissionsToJSON(value['dmPermissions']),
         'has_graduated_access': value['hasGraduatedAccess'],
         'has_hidden_likes_on_profile': value['hasHiddenLikesOnProfile'],
         'has_hidden_subscriptions_on_profile': value['hasHiddenSubscriptionsOnProfile'],
@@ -319,17 +484,27 @@ export function UserToJSONTyped(value?: User | null, ignoreDiscriminator: boolea
         'is_profile_translatable': value['isProfileTranslatable'],
         'legacy': UserLegacyToJSON(value['legacy']),
         'legacy_extended_profile': UserLegacyExtendedProfileToJSON(value['legacyExtendedProfile']),
+        'location': UserLocationToJSON(value['location']),
+        'media_permissions': UserMediaPermissionsToJSON(value['mediaPermissions']),
         'parody_commentary_fan_label': value['parodyCommentaryFanLabel'],
         'premium_gifting_eligible': value['premiumGiftingEligible'],
+        'privacy': UserPrivacyToJSON(value['privacy']),
         'professional': UserProfessionalToJSON(value['professional']),
+        'profile_bio': ProfileBioToJSON(value['profileBio']),
+        'profile_description_language': value['profileDescriptionLanguage'],
         'profile_image_shape': value['profileImageShape'],
+        'profile_sort_enabled': value['profileSortEnabled'],
+        'relationship_perspectives': UserRelationshipPerspectivesToJSON(value['relationshipPerspectives']),
         'rest_id': value['restId'],
         'super_follow_eligible': value['superFollowEligible'],
         'super_followed_by': value['superFollowedBy'],
         'super_following': value['superFollowing'],
+        'super_follows_user_profile': UserProfileToJSON(value['superFollowsUserProfile']),
         'tipjar_settings': UserTipJarSettingsToJSON(value['tipjarSettings']),
         'user_seed_tweet_count': value['userSeedTweetCount'],
+        'verification': UserVerificationToJSON(value['verification']),
         'verification_info': UserVerificationInfoToJSON(value['verificationInfo']),
+        'verified_user_profiles': UserProfileToJSON(value['verifiedUserProfiles']),
     };
 }
 

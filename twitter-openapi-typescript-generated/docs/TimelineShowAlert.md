@@ -7,6 +7,7 @@
 Name | Type
 ------------ | -------------
 `alertType` | string
+`clientEventInfo` | [ClientEventInfo](ClientEventInfo.md)
 `colorConfig` | { [key: string]: any; }
 `displayDurationMs` | number
 `displayLocation` | string
@@ -24,6 +25,7 @@ import type { TimelineShowAlert } from 'twitter-openapi-typescript-generated'
 // TODO: Update the object below with actual values
 const example = {
   "alertType": null,
+  "clientEventInfo": null,
   "colorConfig": null,
   "displayDurationMs": null,
   "displayLocation": null,

@@ -14,6 +14,7 @@ Name | Type
 `entry` | [TimelineAddEntry](TimelineAddEntry.md)
 `entryIdToReplace` | string
 `alertType` | string
+`clientEventInfo` | [ClientEventInfo](ClientEventInfo.md)
 `colorConfig` | { [key: string]: any; }
 `displayDurationMs` | number
 `displayLocation` | string
@@ -22,7 +23,6 @@ Name | Type
 `triggerDelayMs` | number
 `usersResults` | [Array&lt;UserResults&gt;](UserResults.md)
 `direction` | string
-`clientEventInfo` | [ClientEventInfo](ClientEventInfo.md)
 `cover` | [TimelineHalfCover](TimelineHalfCover.md)
 `sortIndex` | string
 
@@ -41,6 +41,7 @@ const example = {
   "entry": null,
   "entryIdToReplace": null,
   "alertType": null,
+  "clientEventInfo": null,
   "colorConfig": null,
   "displayDurationMs": null,
   "displayLocation": null,
@@ -49,7 +50,6 @@ const example = {
   "triggerDelayMs": null,
   "usersResults": null,
   "direction": null,
-  "clientEventInfo": null,
   "cover": null,
   "sortIndex": null,
 } satisfies InstructionUnion

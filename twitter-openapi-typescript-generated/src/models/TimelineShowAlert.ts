@@ -27,6 +27,13 @@ import {
     InstructionTypeToJSON,
     InstructionTypeToJSONTyped,
 } from './InstructionType';
+import type { ClientEventInfo } from './ClientEventInfo';
+import {
+    ClientEventInfoFromJSON,
+    ClientEventInfoFromJSONTyped,
+    ClientEventInfoToJSON,
+    ClientEventInfoToJSONTyped,
+} from './ClientEventInfo';
 import type { UserResults } from './UserResults';
 import {
     UserResultsFromJSON,
@@ -47,6 +54,12 @@ export interface TimelineShowAlert {
      * @memberof TimelineShowAlert
      */
     alertType?: TimelineShowAlertAlertTypeEnum;
+    /**
+     * 
+     * @type {ClientEventInfo}
+     * @memberof TimelineShowAlert
+     */
+    clientEventInfo?: ClientEventInfo;
     /**
      * 
      * @type {{ [key: string]: any; }}
@@ -136,6 +149,7 @@ export function TimelineShowAlertFromJSONTyped(json: any, ignoreDiscriminator: b
     return {
         
         'alertType': json['alertType'] == null ? undefined : json['alertType'],
+        'clientEventInfo': json['clientEventInfo'] == null ? undefined : ClientEventInfoFromJSON(json['clientEventInfo']),
         'colorConfig': json['colorConfig'] == null ? undefined : json['colorConfig'],
         'displayDurationMs': json['displayDurationMs'] == null ? undefined : json['displayDurationMs'],
         'displayLocation': json['displayLocation'] == null ? undefined : json['displayLocation'],
@@ -159,6 +173,7 @@ export function TimelineShowAlertToJSONTyped(value?: TimelineShowAlert | null, i
     return {
         
         'alertType': value['alertType'],
+        'clientEventInfo': ClientEventInfoToJSON(value['clientEventInfo']),
         'colorConfig': value['colorConfig'],
         'displayDurationMs': value['displayDurationMs'],
         'displayLocation': value['displayLocation'],

@@ -43,10 +43,16 @@ import {
 export interface ArticleResult {
     /**
      * 
+     * @type {{ [key: string]: any; }}
+     * @memberof ArticleResult
+     */
+    contentState?: { [key: string]: any; };
+    /**
+     * 
      * @type {ArticleCoverMedia}
      * @memberof ArticleResult
      */
-    coverMedia: ArticleCoverMedia;
+    coverMedia?: ArticleCoverMedia;
     /**
      * 
      * @type {string}
@@ -55,10 +61,22 @@ export interface ArticleResult {
     id: string;
     /**
      * 
+     * @type {boolean}
+     * @memberof ArticleResult
+     */
+    isGrokSummaryEligible?: boolean;
+    /**
+     * 
      * @type {ArticleLifecycleState}
      * @memberof ArticleResult
      */
     lifecycleState?: ArticleLifecycleState;
+    /**
+     * 
+     * @type {Array<ArticleCoverMedia>}
+     * @memberof ArticleResult
+     */
+    mediaEntities?: Array<ArticleCoverMedia>;
     /**
      * 
      * @type {ArticleMetadata}
@@ -89,7 +107,6 @@ export interface ArticleResult {
  * Check if a given object implements the ArticleResult interface.
  */
 export function instanceOfArticleResult(value: object): value is ArticleResult {
-    if (!('coverMedia' in value) || value['coverMedia'] === undefined) return false;
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('metadata' in value) || value['metadata'] === undefined) return false;
     if (!('previewText' in value) || value['previewText'] === undefined) return false;
@@ -108,9 +125,12 @@ export function ArticleResultFromJSONTyped(json: any, ignoreDiscriminator: boole
     }
     return {
         
-        'coverMedia': ArticleCoverMediaFromJSON(json['cover_media']),
+        'contentState': json['content_state'] == null ? undefined : json['content_state'],
+        'coverMedia': json['cover_media'] == null ? undefined : ArticleCoverMediaFromJSON(json['cover_media']),
         'id': json['id'],
+        'isGrokSummaryEligible': json['is_grok_summary_eligible'] == null ? undefined : json['is_grok_summary_eligible'],
         'lifecycleState': json['lifecycle_state'] == null ? undefined : ArticleLifecycleStateFromJSON(json['lifecycle_state']),
+        'mediaEntities': json['media_entities'] == null ? undefined : ((json['media_entities'] as Array<any>).map(ArticleCoverMediaFromJSON)),
         'metadata': ArticleMetadataFromJSON(json['metadata']),
         'previewText': json['preview_text'],
         'restId': json['rest_id'],
@@ -129,9 +149,12 @@ export function ArticleResultToJSONTyped(value?: ArticleResult | null, ignoreDis
 
     return {
         
+        'content_state': value['contentState'],
         'cover_media': ArticleCoverMediaToJSON(value['coverMedia']),
         'id': value['id'],
+        'is_grok_summary_eligible': value['isGrokSummaryEligible'],
         'lifecycle_state': ArticleLifecycleStateToJSON(value['lifecycleState']),
+        'media_entities': value['mediaEntities'] == null ? undefined : ((value['mediaEntities'] as Array<any>).map(ArticleCoverMediaToJSON)),
         'metadata': ArticleMetadataToJSON(value['metadata']),
         'preview_text': value['previewText'],
         'rest_id': value['restId'],

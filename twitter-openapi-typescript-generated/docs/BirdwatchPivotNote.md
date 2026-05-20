@@ -6,6 +6,9 @@
 
 Name | Type
 ------------ | -------------
+`grokTranslatedCommunityNoteWithAvailability` | [GrokTranslatedCommunityNoteWithAvailability](GrokTranslatedCommunityNoteWithAvailability.md)
+`isCommunityNoteTranslatable` | boolean
+`language` | string
 `restId` | string
 
 ## Example
@@ -15,6 +18,9 @@ import type { BirdwatchPivotNote } from 'twitter-openapi-typescript-generated'
 
 // TODO: Update the object below with actual values
 const example = {
+  "grokTranslatedCommunityNoteWithAvailability": null,
+  "isCommunityNoteTranslatable": null,
+  "language": null,
   "restId": null,
 } satisfies BirdwatchPivotNote
 

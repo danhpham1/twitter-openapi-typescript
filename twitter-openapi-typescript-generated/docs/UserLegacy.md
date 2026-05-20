@@ -41,12 +41,16 @@ Name | Type
 `_protected` | boolean
 `screenName` | string
 `statusesCount` | number
+`timeZone` | string
 `translatorType` | string
 `url` | string
+`utcOffset` | number
 `verified` | boolean
 `verifiedType` | string
 `wantRetweets` | boolean
+`withheldDescription` | string
 `withheldInCountries` | Array&lt;string&gt;
+`withheldScope` | string
 
 ## Example
 
@@ -90,12 +94,16 @@ const example = {
   "_protected": null,
   "screenName": null,
   "statusesCount": null,
+  "timeZone": null,
   "translatorType": null,
   "url": null,
+  "utcOffset": null,
   "verified": null,
   "verifiedType": null,
   "wantRetweets": null,
+  "withheldDescription": null,
   "withheldInCountries": null,
+  "withheldScope": null,
 } satisfies UserLegacy
 
 console.log(example)

@@ -20,6 +20,13 @@ import {
     MediaToJSON,
     MediaToJSONTyped,
 } from './Media';
+import type { Smarttag } from './Smarttag';
+import {
+    SmarttagFromJSON,
+    SmarttagFromJSONTyped,
+    SmarttagToJSON,
+    SmarttagToJSONTyped,
+} from './Smarttag';
 import type { Timestamp } from './Timestamp';
 import {
     TimestampFromJSON,
@@ -46,7 +53,7 @@ export interface Entities {
      * @type {Array<{ [key: string]: any; }>}
      * @memberof Entities
      */
-    hashtags: Array<{ [key: string]: any; }>;
+    hashtags?: Array<{ [key: string]: any; }>;
     /**
      * 
      * @type {Array<Media>}
@@ -55,10 +62,16 @@ export interface Entities {
     media?: Array<Media>;
     /**
      * 
+     * @type {Array<Smarttag>}
+     * @memberof Entities
+     */
+    smarttags?: Array<Smarttag>;
+    /**
+     * 
      * @type {Array<{ [key: string]: any; }>}
      * @memberof Entities
      */
-    symbols: Array<{ [key: string]: any; }>;
+    symbols?: Array<{ [key: string]: any; }>;
     /**
      * 
      * @type {Array<Timestamp>}
@@ -70,23 +83,19 @@ export interface Entities {
      * @type {Array<Url>}
      * @memberof Entities
      */
-    urls: Array<Url>;
+    urls?: Array<Url>;
     /**
      * 
      * @type {Array<{ [key: string]: any; }>}
      * @memberof Entities
      */
-    userMentions: Array<{ [key: string]: any; }>;
+    userMentions?: Array<{ [key: string]: any; }>;
 }
 
 /**
  * Check if a given object implements the Entities interface.
  */
 export function instanceOfEntities(value: object): value is Entities {
-    if (!('hashtags' in value) || value['hashtags'] === undefined) return false;
-    if (!('symbols' in value) || value['symbols'] === undefined) return false;
-    if (!('urls' in value) || value['urls'] === undefined) return false;
-    if (!('userMentions' in value) || value['userMentions'] === undefined) return false;
     return true;
 }
 
@@ -100,12 +109,13 @@ export function EntitiesFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
     }
     return {
         
-        'hashtags': json['hashtags'],
+        'hashtags': json['hashtags'] == null ? undefined : json['hashtags'],
         'media': json['media'] == null ? undefined : ((json['media'] as Array<any>).map(MediaFromJSON)),
-        'symbols': json['symbols'],
+        'smarttags': json['smarttags'] == null ? undefined : ((json['smarttags'] as Array<any>).map(SmarttagFromJSON)),
+        'symbols': json['symbols'] == null ? undefined : json['symbols'],
         'timestamps': json['timestamps'] == null ? undefined : ((json['timestamps'] as Array<any>).map(TimestampFromJSON)),
-        'urls': ((json['urls'] as Array<any>).map(UrlFromJSON)),
-        'userMentions': json['user_mentions'],
+        'urls': json['urls'] == null ? undefined : ((json['urls'] as Array<any>).map(UrlFromJSON)),
+        'userMentions': json['user_mentions'] == null ? undefined : json['user_mentions'],
     };
 }
 
@@ -122,9 +132,10 @@ export function EntitiesToJSONTyped(value?: Entities | null, ignoreDiscriminator
         
         'hashtags': value['hashtags'],
         'media': value['media'] == null ? undefined : ((value['media'] as Array<any>).map(MediaToJSON)),
+        'smarttags': value['smarttags'] == null ? undefined : ((value['smarttags'] as Array<any>).map(SmarttagToJSON)),
         'symbols': value['symbols'],
         'timestamps': value['timestamps'] == null ? undefined : ((value['timestamps'] as Array<any>).map(TimestampToJSON)),
-        'urls': ((value['urls'] as Array<any>).map(UrlToJSON)),
+        'urls': value['urls'] == null ? undefined : ((value['urls'] as Array<any>).map(UrlToJSON)),
         'user_mentions': value['userMentions'],
     };
 }

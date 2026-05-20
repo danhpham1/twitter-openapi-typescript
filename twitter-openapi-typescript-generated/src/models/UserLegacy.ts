@@ -48,7 +48,7 @@ export interface UserLegacy {
      * @type {string}
      * @memberof UserLegacy
      */
-    createdAt: string;
+    createdAt?: string;
     /**
      * 
      * @type {boolean}
@@ -138,7 +138,7 @@ export interface UserLegacy {
      * @type {string}
      * @memberof UserLegacy
      */
-    location: string;
+    location?: string;
     /**
      * 
      * @type {number}
@@ -156,7 +156,7 @@ export interface UserLegacy {
      * @type {string}
      * @memberof UserLegacy
      */
-    name: string;
+    name?: string;
     /**
      * 
      * @type {number}
@@ -174,7 +174,7 @@ export interface UserLegacy {
      * @type {Array<string>}
      * @memberof UserLegacy
      */
-    pinnedTweetIdsStr: Array<string>;
+    pinnedTweetIdsStr?: Array<string>;
     /**
      * 
      * @type {boolean}
@@ -204,7 +204,7 @@ export interface UserLegacy {
      * @type {string}
      * @memberof UserLegacy
      */
-    profileImageUrlHttps: string;
+    profileImageUrlHttps?: string;
     /**
      * 
      * @type {string}
@@ -222,13 +222,19 @@ export interface UserLegacy {
      * @type {string}
      * @memberof UserLegacy
      */
-    screenName: string;
+    screenName?: string;
     /**
      * 
      * @type {number}
      * @memberof UserLegacy
      */
     statusesCount: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserLegacy
+     */
+    timeZone: string;
     /**
      * 
      * @type {string}
@@ -243,10 +249,16 @@ export interface UserLegacy {
     url?: string;
     /**
      * 
+     * @type {number}
+     * @memberof UserLegacy
+     */
+    utcOffset: number;
+    /**
+     * 
      * @type {boolean}
      * @memberof UserLegacy
      */
-    verified: boolean;
+    verified?: boolean;
     /**
      * 
      * @type {UserLegacyVerifiedTypeEnum}
@@ -261,10 +273,22 @@ export interface UserLegacy {
     wantRetweets?: boolean;
     /**
      * 
+     * @type {string}
+     * @memberof UserLegacy
+     */
+    withheldDescription: string;
+    /**
+     * 
      * @type {Array<string>}
      * @memberof UserLegacy
      */
     withheldInCountries?: Array<string>;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserLegacy
+     */
+    withheldScope: string;
 }
 
 
@@ -282,7 +306,6 @@ export type UserLegacyVerifiedTypeEnum = typeof UserLegacyVerifiedTypeEnum[keyof
  * Check if a given object implements the UserLegacy interface.
  */
 export function instanceOfUserLegacy(value: object): value is UserLegacy {
-    if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
     if (!('defaultProfile' in value) || value['defaultProfile'] === undefined) return false;
     if (!('defaultProfileImage' in value) || value['defaultProfileImage'] === undefined) return false;
     if (!('description' in value) || value['description'] === undefined) return false;
@@ -294,18 +317,16 @@ export function instanceOfUserLegacy(value: object): value is UserLegacy {
     if (!('hasCustomTimelines' in value) || value['hasCustomTimelines'] === undefined) return false;
     if (!('isTranslator' in value) || value['isTranslator'] === undefined) return false;
     if (!('listedCount' in value) || value['listedCount'] === undefined) return false;
-    if (!('location' in value) || value['location'] === undefined) return false;
     if (!('mediaCount' in value) || value['mediaCount'] === undefined) return false;
-    if (!('name' in value) || value['name'] === undefined) return false;
     if (!('normalFollowersCount' in value) || value['normalFollowersCount'] === undefined) return false;
-    if (!('pinnedTweetIdsStr' in value) || value['pinnedTweetIdsStr'] === undefined) return false;
     if (!('possiblySensitive' in value) || value['possiblySensitive'] === undefined) return false;
-    if (!('profileImageUrlHttps' in value) || value['profileImageUrlHttps'] === undefined) return false;
     if (!('profileInterstitialType' in value) || value['profileInterstitialType'] === undefined) return false;
-    if (!('screenName' in value) || value['screenName'] === undefined) return false;
     if (!('statusesCount' in value) || value['statusesCount'] === undefined) return false;
+    if (!('timeZone' in value) || value['timeZone'] === undefined) return false;
     if (!('translatorType' in value) || value['translatorType'] === undefined) return false;
-    if (!('verified' in value) || value['verified'] === undefined) return false;
+    if (!('utcOffset' in value) || value['utcOffset'] === undefined) return false;
+    if (!('withheldDescription' in value) || value['withheldDescription'] === undefined) return false;
+    if (!('withheldScope' in value) || value['withheldScope'] === undefined) return false;
     return true;
 }
 
@@ -323,7 +344,7 @@ export function UserLegacyFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'blocking': json['blocking'] == null ? undefined : json['blocking'],
         'canDm': json['can_dm'] == null ? undefined : json['can_dm'],
         'canMediaTag': json['can_media_tag'] == null ? undefined : json['can_media_tag'],
-        'createdAt': json['created_at'],
+        'createdAt': json['created_at'] == null ? undefined : json['created_at'],
         'defaultProfile': json['default_profile'],
         'defaultProfileImage': json['default_profile_image'],
         'description': json['description'],
@@ -338,28 +359,32 @@ export function UserLegacyFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'hasCustomTimelines': json['has_custom_timelines'],
         'isTranslator': json['is_translator'],
         'listedCount': json['listed_count'],
-        'location': json['location'],
+        'location': json['location'] == null ? undefined : json['location'],
         'mediaCount': json['media_count'],
         'muting': json['muting'] == null ? undefined : json['muting'],
-        'name': json['name'],
+        'name': json['name'] == null ? undefined : json['name'],
         'normalFollowersCount': json['normal_followers_count'],
         'notifications': json['notifications'] == null ? undefined : json['notifications'],
-        'pinnedTweetIdsStr': json['pinned_tweet_ids_str'],
+        'pinnedTweetIdsStr': json['pinned_tweet_ids_str'] == null ? undefined : json['pinned_tweet_ids_str'],
         'possiblySensitive': json['possibly_sensitive'],
         'profileBannerExtensions': json['profile_banner_extensions'] == null ? undefined : json['profile_banner_extensions'],
         'profileBannerUrl': json['profile_banner_url'] == null ? undefined : json['profile_banner_url'],
         'profileImageExtensions': json['profile_image_extensions'] == null ? undefined : json['profile_image_extensions'],
-        'profileImageUrlHttps': json['profile_image_url_https'],
+        'profileImageUrlHttps': json['profile_image_url_https'] == null ? undefined : json['profile_image_url_https'],
         'profileInterstitialType': json['profile_interstitial_type'],
         '_protected': json['protected'] == null ? undefined : json['protected'],
-        'screenName': json['screen_name'],
+        'screenName': json['screen_name'] == null ? undefined : json['screen_name'],
         'statusesCount': json['statuses_count'],
+        'timeZone': json['time_zone'],
         'translatorType': json['translator_type'],
         'url': json['url'] == null ? undefined : json['url'],
-        'verified': json['verified'],
+        'utcOffset': json['utc_offset'],
+        'verified': json['verified'] == null ? undefined : json['verified'],
         'verifiedType': json['verified_type'] == null ? undefined : json['verified_type'],
         'wantRetweets': json['want_retweets'] == null ? undefined : json['want_retweets'],
+        'withheldDescription': json['withheld_description'],
         'withheldInCountries': json['withheld_in_countries'] == null ? undefined : json['withheld_in_countries'],
+        'withheldScope': json['withheld_scope'],
     };
 }
 
@@ -409,12 +434,16 @@ export function UserLegacyToJSONTyped(value?: UserLegacy | null, ignoreDiscrimin
         'protected': value['_protected'],
         'screen_name': value['screenName'],
         'statuses_count': value['statusesCount'],
+        'time_zone': value['timeZone'],
         'translator_type': value['translatorType'],
         'url': value['url'],
+        'utc_offset': value['utcOffset'],
         'verified': value['verified'],
         'verified_type': value['verifiedType'],
         'want_retweets': value['wantRetweets'],
+        'withheld_description': value['withheldDescription'],
         'withheld_in_countries': value['withheldInCountries'],
+        'withheld_scope': value['withheldScope'],
     };
 }
 

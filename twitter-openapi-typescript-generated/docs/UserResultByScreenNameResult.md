@@ -7,9 +7,12 @@
 Name | Type
 ------------ | -------------
 `typename` | [TypeName](TypeName.md)
+`core` | [UserResultByScreenNameCore](UserResultByScreenNameCore.md)
 `id` | string
 `legacy` | [UserResultByScreenNameLegacy](UserResultByScreenNameLegacy.md)
+`privacy` | [UserResultPrivacy](UserResultPrivacy.md)
 `profilemodules` | { [key: string]: any; }
+`relationshipPerspectives` | [UserResultRelationshipPerspectives](UserResultRelationshipPerspectives.md)
 `restId` | string
 
 ## Example
@@ -20,9 +23,12 @@ import type { UserResultByScreenNameResult } from 'twitter-openapi-typescript-ge
 // TODO: Update the object below with actual values
 const example = {
   "typename": null,
+  "core": null,
   "id": null,
   "legacy": null,
+  "privacy": null,
   "profilemodules": null,
+  "relationshipPerspectives": null,
   "restId": null,
 } satisfies UserResultByScreenNameResult
 

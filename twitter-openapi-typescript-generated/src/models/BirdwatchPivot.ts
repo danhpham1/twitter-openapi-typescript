@@ -68,6 +68,12 @@ export interface BirdwatchPivot {
     footer?: BirdwatchPivotFooter;
     /**
      * 
+     * @type {BirdwatchPivotFooterIconTypeEnum}
+     * @memberof BirdwatchPivot
+     */
+    footerIconType?: BirdwatchPivotFooterIconTypeEnum;
+    /**
+     * 
      * @type {BirdwatchPivotIconTypeEnum}
      * @memberof BirdwatchPivot
      */
@@ -114,8 +120,17 @@ export interface BirdwatchPivot {
 /**
  * @export
  */
+export const BirdwatchPivotFooterIconTypeEnum = {
+    BirdwatchEyeOff: 'BirdwatchEyeOff'
+} as const;
+export type BirdwatchPivotFooterIconTypeEnum = typeof BirdwatchPivotFooterIconTypeEnum[keyof typeof BirdwatchPivotFooterIconTypeEnum];
+
+/**
+ * @export
+ */
 export const BirdwatchPivotIconTypeEnum = {
-    BirdwatchV1Icon: 'BirdwatchV1Icon'
+    BirdwatchV1Icon: 'BirdwatchV1Icon',
+    BirdwatchCameraVideo: 'BirdwatchCameraVideo'
 } as const;
 export type BirdwatchPivotIconTypeEnum = typeof BirdwatchPivotIconTypeEnum[keyof typeof BirdwatchPivotIconTypeEnum];
 
@@ -152,6 +167,7 @@ export function BirdwatchPivotFromJSONTyped(json: any, ignoreDiscriminator: bool
         'callToAction': json['callToAction'] == null ? undefined : BirdwatchPivotCallToActionFromJSON(json['callToAction']),
         'destinationUrl': json['destinationUrl'],
         'footer': json['footer'] == null ? undefined : BirdwatchPivotFooterFromJSON(json['footer']),
+        'footerIconType': json['footerIconType'] == null ? undefined : json['footerIconType'],
         'iconType': json['iconType'],
         'note': json['note'] == null ? undefined : BirdwatchPivotNoteFromJSON(json['note']),
         'shorttitle': json['shorttitle'] == null ? undefined : json['shorttitle'],
@@ -176,6 +192,7 @@ export function BirdwatchPivotToJSONTyped(value?: BirdwatchPivot | null, ignoreD
         'callToAction': BirdwatchPivotCallToActionToJSON(value['callToAction']),
         'destinationUrl': value['destinationUrl'],
         'footer': BirdwatchPivotFooterToJSON(value['footer']),
+        'footerIconType': value['footerIconType'],
         'iconType': value['iconType'],
         'note': BirdwatchPivotNoteToJSON(value['note']),
         'shorttitle': value['shorttitle'],

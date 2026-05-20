@@ -8,6 +8,7 @@ Name | Type
 ------------ | -------------
 `hashtags` | Array&lt;{ [key: string]: any; }&gt;
 `media` | [Array&lt;Media&gt;](Media.md)
+`smarttags` | [Array&lt;Smarttag&gt;](Smarttag.md)
 `symbols` | Array&lt;{ [key: string]: any; }&gt;
 `timestamps` | [Array&lt;Timestamp&gt;](Timestamp.md)
 `urls` | [Array&lt;Url&gt;](Url.md)
@@ -22,6 +23,7 @@ import type { Entities } from 'twitter-openapi-typescript-generated'
 const example = {
   "hashtags": null,
   "media": null,
+  "smarttags": null,
   "symbols": null,
   "timestamps": null,
   "urls": null,

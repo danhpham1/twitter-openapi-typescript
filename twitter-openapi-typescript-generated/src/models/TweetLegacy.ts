@@ -103,7 +103,7 @@ export interface TweetLegacy {
      * @type {Entities}
      * @memberof TweetLegacy
      */
-    entities: Entities;
+    entities?: Entities;
     /**
      * 
      * @type {ExtendedEntities}
@@ -275,7 +275,6 @@ export function instanceOfTweetLegacy(value: object): value is TweetLegacy {
     if (!('conversationIdStr' in value) || value['conversationIdStr'] === undefined) return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
     if (!('displayTextRange' in value) || value['displayTextRange'] === undefined) return false;
-    if (!('entities' in value) || value['entities'] === undefined) return false;
     if (!('favoriteCount' in value) || value['favoriteCount'] === undefined) return false;
     if (!('favorited' in value) || value['favorited'] === undefined) return false;
     if (!('fullText' in value) || value['fullText'] === undefined) return false;
@@ -306,7 +305,7 @@ export function TweetLegacyFromJSONTyped(json: any, ignoreDiscriminator: boolean
         'conversationIdStr': json['conversation_id_str'],
         'createdAt': json['created_at'],
         'displayTextRange': json['display_text_range'],
-        'entities': EntitiesFromJSON(json['entities']),
+        'entities': json['entities'] == null ? undefined : EntitiesFromJSON(json['entities']),
         'extendedEntities': json['extended_entities'] == null ? undefined : ExtendedEntitiesFromJSON(json['extended_entities']),
         'favoriteCount': json['favorite_count'],
         'favorited': json['favorited'],

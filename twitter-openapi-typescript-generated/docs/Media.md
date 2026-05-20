@@ -13,6 +13,7 @@ Name | Type
 `extAltText` | string
 `extMediaAvailability` | [ExtMediaAvailability](ExtMediaAvailability.md)
 `features` | object
+`grokPostId` | string
 `idStr` | string
 `indices` | Array&lt;number&gt;
 `mediaKey` | string
@@ -41,6 +42,7 @@ const example = {
   "extAltText": null,
   "extMediaAvailability": null,
   "features": null,
+  "grokPostId": null,
   "idStr": null,
   "indices": null,
   "mediaKey": null,

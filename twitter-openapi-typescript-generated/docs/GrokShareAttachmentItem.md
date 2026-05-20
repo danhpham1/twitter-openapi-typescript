@@ -7,6 +7,7 @@
 Name | Type
 ------------ | -------------
 `analysisPostIdResults` | [AnalysisResults](AnalysisResults.md)
+`deepsearchHeaders` | Array&lt;{ [key: string]: any; }&gt;
 `mediaUrls` | Array&lt;string&gt;
 `message` | string
 
@@ -18,6 +19,7 @@ import type { GrokShareAttachmentItem } from 'twitter-openapi-typescript-generat
 // TODO: Update the object below with actual values
 const example = {
   "analysisPostIdResults": null,
+  "deepsearchHeaders": null,
   "mediaUrls": null,
   "message": null,
 } satisfies GrokShareAttachmentItem

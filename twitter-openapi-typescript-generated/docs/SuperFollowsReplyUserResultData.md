@@ -7,7 +7,7 @@
 Name | Type
 ------------ | -------------
 `typename` | [TypeName](TypeName.md)
-`legacy` | [SuperFollowsReplyUserResultLegacy](SuperFollowsReplyUserResultLegacy.md)
+`core` | [SuperFollowsReplyUserResultCore](SuperFollowsReplyUserResultCore.md)
 
 ## Example
 
@@ -17,7 +17,7 @@ import type { SuperFollowsReplyUserResultData } from 'twitter-openapi-typescript
 // TODO: Update the object below with actual values
 const example = {
   "typename": null,
-  "legacy": null,
+  "core": null,
 } satisfies SuperFollowsReplyUserResultData
 
 console.log(example)

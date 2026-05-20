@@ -6,6 +6,7 @@
 
 Name | Type
 ------------ | -------------
+`articlePreview` | [ArticlePreview](ArticlePreview.md)
 `bookmarkCount` | number
 `core` | [UserResultCore](UserResultCore.md)
 `createdAt` | string
@@ -25,6 +26,7 @@ import type { TweetPreviewDisplayTweet } from 'twitter-openapi-typescript-genera
 
 // TODO: Update the object below with actual values
 const example = {
+  "articlePreview": null,
   "bookmarkCount": null,
   "core": null,
   "createdAt": Sat Dec 31 23:59:59 +0000 2023,

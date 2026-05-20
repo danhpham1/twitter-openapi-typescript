@@ -16,7 +16,7 @@ import type { PostCreateRetweetRequest } from 'twitter-openapi-typescript-genera
 
 // TODO: Update the object below with actual values
 const example = {
-  "queryId": ojPdsZsimiJrUGLR1sjUtA,
+  "queryId": mbRO74GrOvSfRcJnlMapnQ,
   "variables": null,
 } satisfies PostCreateRetweetRequest
 

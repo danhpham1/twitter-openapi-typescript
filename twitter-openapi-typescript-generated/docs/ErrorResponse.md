@@ -12,7 +12,7 @@ Name | Type
 `locations` | [Array&lt;Location&gt;](Location.md)
 `message` | string
 `name` | string
-`path` | Array&lt;any&gt;
+`path` | [Array&lt;ErrorResponsePathInner&gt;](ErrorResponsePathInner.md)
 `retryAfter` | number
 `source` | string
 `tracing` | [Tracing](Tracing.md)

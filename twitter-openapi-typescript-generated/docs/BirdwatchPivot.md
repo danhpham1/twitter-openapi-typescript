@@ -9,6 +9,7 @@ Name | Type
 `callToAction` | [BirdwatchPivotCallToAction](BirdwatchPivotCallToAction.md)
 `destinationUrl` | string
 `footer` | [BirdwatchPivotFooter](BirdwatchPivotFooter.md)
+`footerIconType` | string
 `iconType` | string
 `note` | [BirdwatchPivotNote](BirdwatchPivotNote.md)
 `shorttitle` | string
@@ -27,6 +28,7 @@ const example = {
   "callToAction": null,
   "destinationUrl": null,
   "footer": null,
+  "footerIconType": null,
   "iconType": null,
   "note": null,
   "shorttitle": null,

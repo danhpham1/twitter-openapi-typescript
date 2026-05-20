@@ -204,7 +204,7 @@ async function example() {
 
   const body = {
     // string
-    pathQueryId: ojPdsZsimiJrUGLR1sjUtA,
+    pathQueryId: mbRO74GrOvSfRcJnlMapnQ,
     // PostCreateRetweetRequest | body
     postCreateRetweetRequest: ...,
   } satisfies PostCreateRetweetOperationRequest;
@@ -226,7 +226,7 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pathQueryId** | `string` |  | [Defaults to `&#39;ojPdsZsimiJrUGLR1sjUtA&#39;`] |
+| **pathQueryId** | `string` |  | [Defaults to `&#39;mbRO74GrOvSfRcJnlMapnQ&#39;`] |
 | **postCreateRetweetRequest** | [PostCreateRetweetRequest](PostCreateRetweetRequest.md) | body | |
 
 ### Return type
@@ -322,7 +322,7 @@ async function example() {
 
   const body = {
     // string
-    pathQueryId: IID9x6WsdMnTlXnzXGq8ng,
+    pathQueryId: 5CdvsV_zjv4L64XFifAglw,
     // PostCreateTweetRequest | body
     postCreateTweetRequest: ...,
   } satisfies PostCreateTweetOperationRequest;
@@ -344,7 +344,7 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pathQueryId** | `string` |  | [Defaults to `&#39;IID9x6WsdMnTlXnzXGq8ng&#39;`] |
+| **pathQueryId** | `string` |  | [Defaults to `&#39;5CdvsV_zjv4L64XFifAglw&#39;`] |
 | **postCreateTweetRequest** | [PostCreateTweetRequest](PostCreateTweetRequest.md) | body | |
 
 ### Return type
@@ -558,7 +558,7 @@ async function example() {
 
   const body = {
     // string
-    pathQueryId: iQtK4dl5hBmXewYZuEOKVw,
+    pathQueryId: ZyZigVsNiFO6v1dEks1eWg,
     // PostDeleteRetweetRequest | body
     postDeleteRetweetRequest: ...,
   } satisfies PostDeleteRetweetOperationRequest;
@@ -580,7 +580,7 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pathQueryId** | `string` |  | [Defaults to `&#39;iQtK4dl5hBmXewYZuEOKVw&#39;`] |
+| **pathQueryId** | `string` |  | [Defaults to `&#39;ZyZigVsNiFO6v1dEks1eWg&#39;`] |
 | **postDeleteRetweetRequest** | [PostDeleteRetweetRequest](PostDeleteRetweetRequest.md) | body | |
 
 ### Return type

@@ -6,7 +6,7 @@
 
 Name | Type
 ------------ | -------------
-`communityResults` | [Community](Community.md)
+`communityResults` | [CommunityResult](CommunityResult.md)
 `role` | string
 `userResults` | [UserResults](UserResults.md)
 

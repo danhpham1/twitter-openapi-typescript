@@ -80,11 +80,11 @@ async function example() {
 
   const body = {
     // string
-    pathQueryId: tD8zKvQzwY3kdx5yz6YmOw,
+    pathQueryId: XIpMDIi_YoVzXeoON-cfAQ,
     // string
     variables: {"userId": "44196397", "withSafetyModeUserFields": true},
     // string
-    features: {"hidden_profile_likes_enabled": true, "hidden_profile_subscriptions_enabled": true, "responsive_web_graphql_exclude_directive_enabled": true, "verified_phone_label_enabled": false, "highlights_tweets_tab_ui_enabled": true, "responsive_web_twitter_article_notes_tab_enabled": true, "creator_subscriptions_tweet_preview_api_enabled": true, "responsive_web_graphql_skip_user_profile_image_extensions_enabled": false, "responsive_web_graphql_timeline_navigation_enabled": true},
+    features: {"hidden_profile_subscriptions_enabled": true, "payments_enabled": false, "profile_label_improvements_pcf_label_in_post_enabled": true, "responsive_web_profile_redirect_enabled": false, "rweb_tipjar_consumption_enabled": true, "verified_phone_label_enabled": false, "highlights_tweets_tab_ui_enabled": true, "responsive_web_twitter_article_notes_tab_enabled": true, "subscriptions_feature_can_gift_premium": true, "creator_subscriptions_tweet_preview_api_enabled": true, "responsive_web_graphql_skip_user_profile_image_extensions_enabled": false, "responsive_web_graphql_timeline_navigation_enabled": true},
   } satisfies GetUserByRestIdRequest;
 
   try {
@@ -104,9 +104,9 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pathQueryId** | `string` |  | [Defaults to `&#39;tD8zKvQzwY3kdx5yz6YmOw&#39;`] |
+| **pathQueryId** | `string` |  | [Defaults to `&#39;XIpMDIi_YoVzXeoON-cfAQ&#39;`] |
 | **variables** | `string` |  | [Defaults to `&#39;{\&quot;userId\&quot;: \&quot;44196397\&quot;, \&quot;withSafetyModeUserFields\&quot;: true}&#39;`] |
-| **features** | `string` |  | [Defaults to `&#39;{\&quot;hidden_profile_likes_enabled\&quot;: true, \&quot;hidden_profile_subscriptions_enabled\&quot;: true, \&quot;responsive_web_graphql_exclude_directive_enabled\&quot;: true, \&quot;verified_phone_label_enabled\&quot;: false, \&quot;highlights_tweets_tab_ui_enabled\&quot;: true, \&quot;responsive_web_twitter_article_notes_tab_enabled\&quot;: true, \&quot;creator_subscriptions_tweet_preview_api_enabled\&quot;: true, \&quot;responsive_web_graphql_skip_user_profile_image_extensions_enabled\&quot;: false, \&quot;responsive_web_graphql_timeline_navigation_enabled\&quot;: true}&#39;`] |
+| **features** | `string` |  | [Defaults to `&#39;{\&quot;hidden_profile_subscriptions_enabled\&quot;: true, \&quot;payments_enabled\&quot;: false, \&quot;profile_label_improvements_pcf_label_in_post_enabled\&quot;: true, \&quot;responsive_web_profile_redirect_enabled\&quot;: false, \&quot;rweb_tipjar_consumption_enabled\&quot;: true, \&quot;verified_phone_label_enabled\&quot;: false, \&quot;highlights_tweets_tab_ui_enabled\&quot;: true, \&quot;responsive_web_twitter_article_notes_tab_enabled\&quot;: true, \&quot;subscriptions_feature_can_gift_premium\&quot;: true, \&quot;creator_subscriptions_tweet_preview_api_enabled\&quot;: true, \&quot;responsive_web_graphql_skip_user_profile_image_extensions_enabled\&quot;: false, \&quot;responsive_web_graphql_timeline_navigation_enabled\&quot;: true}&#39;`] |
 
 ### Return type
 
@@ -201,13 +201,13 @@ async function example() {
 
   const body = {
     // string
-    pathQueryId: 1VOOyvKkiI3FMmkeDNxM9A,
+    pathQueryId: IGgvgiOx4QZndDHuD3x9TQ,
     // string
     variables: {"screen_name": "elonmusk"},
     // string
-    features: {"hidden_profile_subscriptions_enabled": true, "profile_label_improvements_pcf_label_in_post_enabled": true, "rweb_tipjar_consumption_enabled": true, "verified_phone_label_enabled": false, "subscriptions_verification_info_is_identity_verified_enabled": true, "subscriptions_verification_info_verified_since_enabled": true, "highlights_tweets_tab_ui_enabled": true, "responsive_web_twitter_article_notes_tab_enabled": true, "subscriptions_feature_can_gift_premium": true, "creator_subscriptions_tweet_preview_api_enabled": true, "responsive_web_graphql_skip_user_profile_image_extensions_enabled": false, "responsive_web_graphql_timeline_navigation_enabled": true},
+    features: {"hidden_profile_subscriptions_enabled": true, "profile_label_improvements_pcf_label_in_post_enabled": true, "responsive_web_profile_redirect_enabled": false, "rweb_tipjar_consumption_enabled": false, "verified_phone_label_enabled": false, "subscriptions_verification_info_is_identity_verified_enabled": true, "subscriptions_verification_info_verified_since_enabled": true, "highlights_tweets_tab_ui_enabled": true, "responsive_web_twitter_article_notes_tab_enabled": true, "subscriptions_feature_can_gift_premium": true, "creator_subscriptions_tweet_preview_api_enabled": true, "responsive_web_graphql_skip_user_profile_image_extensions_enabled": false, "responsive_web_graphql_timeline_navigation_enabled": true},
     // string
-    fieldToggles: {"withAuxiliaryUserLabels": true},
+    fieldToggles: {"withPayments": false, "withAuxiliaryUserLabels": true},
   } satisfies GetUserByScreenNameRequest;
 
   try {
@@ -227,10 +227,10 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pathQueryId** | `string` |  | [Defaults to `&#39;1VOOyvKkiI3FMmkeDNxM9A&#39;`] |
+| **pathQueryId** | `string` |  | [Defaults to `&#39;IGgvgiOx4QZndDHuD3x9TQ&#39;`] |
 | **variables** | `string` |  | [Defaults to `&#39;{\&quot;screen_name\&quot;: \&quot;elonmusk\&quot;}&#39;`] |
-| **features** | `string` |  | [Defaults to `&#39;{\&quot;hidden_profile_subscriptions_enabled\&quot;: true, \&quot;profile_label_improvements_pcf_label_in_post_enabled\&quot;: true, \&quot;rweb_tipjar_consumption_enabled\&quot;: true, \&quot;verified_phone_label_enabled\&quot;: false, \&quot;subscriptions_verification_info_is_identity_verified_enabled\&quot;: true, \&quot;subscriptions_verification_info_verified_since_enabled\&quot;: true, \&quot;highlights_tweets_tab_ui_enabled\&quot;: true, \&quot;responsive_web_twitter_article_notes_tab_enabled\&quot;: true, \&quot;subscriptions_feature_can_gift_premium\&quot;: true, \&quot;creator_subscriptions_tweet_preview_api_enabled\&quot;: true, \&quot;responsive_web_graphql_skip_user_profile_image_extensions_enabled\&quot;: false, \&quot;responsive_web_graphql_timeline_navigation_enabled\&quot;: true}&#39;`] |
-| **fieldToggles** | `string` |  | [Defaults to `&#39;{\&quot;withAuxiliaryUserLabels\&quot;: true}&#39;`] |
+| **features** | `string` |  | [Defaults to `&#39;{\&quot;hidden_profile_subscriptions_enabled\&quot;: true, \&quot;profile_label_improvements_pcf_label_in_post_enabled\&quot;: true, \&quot;responsive_web_profile_redirect_enabled\&quot;: false, \&quot;rweb_tipjar_consumption_enabled\&quot;: false, \&quot;verified_phone_label_enabled\&quot;: false, \&quot;subscriptions_verification_info_is_identity_verified_enabled\&quot;: true, \&quot;subscriptions_verification_info_verified_since_enabled\&quot;: true, \&quot;highlights_tweets_tab_ui_enabled\&quot;: true, \&quot;responsive_web_twitter_article_notes_tab_enabled\&quot;: true, \&quot;subscriptions_feature_can_gift_premium\&quot;: true, \&quot;creator_subscriptions_tweet_preview_api_enabled\&quot;: true, \&quot;responsive_web_graphql_skip_user_profile_image_extensions_enabled\&quot;: false, \&quot;responsive_web_graphql_timeline_navigation_enabled\&quot;: true}&#39;`] |
+| **fieldToggles** | `string` |  | [Defaults to `&#39;{\&quot;withPayments\&quot;: false, \&quot;withAuxiliaryUserLabels\&quot;: true}&#39;`] |
 
 ### Return type
 

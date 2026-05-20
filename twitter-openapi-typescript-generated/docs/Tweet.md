@@ -12,17 +12,23 @@ Name | Type
 `birdwatchPivot` | [BirdwatchPivot](BirdwatchPivot.md)
 `card` | [TweetCard](TweetCard.md)
 `communityRelationship` | [CommunityRelationship](CommunityRelationship.md)
-`communityResults` | [Community](Community.md)
+`communityResults` | [CommunityResult](CommunityResult.md)
+`contentDisclosure` | [ContentDisclosure](ContentDisclosure.md)
 `core` | [UserResultCore](UserResultCore.md)
 `editControl` | [TweetEditControl](TweetEditControl.md)
 `editPrespective` | [TweetEditPrespective](TweetEditPrespective.md)
 `grokAnalysisButton` | boolean
 `grokAnalysisFollowups` | Array&lt;string&gt;
+`grokAnnotations` | [GrokAnnotation](GrokAnnotation.md)
 `grokShareAttachment` | [GrokShareAttachment](GrokShareAttachment.md)
+`grokTranslatedPostWithAvailability` | [GrokTranslatedPostWithAvailability](GrokTranslatedPostWithAvailability.md)
 `hasBirdwatchNotes` | boolean
 `isTranslatable` | boolean
 `legacy` | [TweetLegacy](TweetLegacy.md)
 `noteTweet` | [NoteTweet](NoteTweet.md)
+`postCta` | [TweetPostCta](TweetPostCta.md)
+`postImageDescription` | string
+`postVideoDescription` | string
 `previousCounts` | [TweetPreviousCounts](TweetPreviousCounts.md)
 `quickPromoteEligibility` | object
 `quotedRefResult` | [QuotedRefResult](QuotedRefResult.md)
@@ -49,16 +55,22 @@ const example = {
   "card": null,
   "communityRelationship": null,
   "communityResults": null,
+  "contentDisclosure": null,
   "core": null,
   "editControl": null,
   "editPrespective": null,
   "grokAnalysisButton": null,
   "grokAnalysisFollowups": null,
+  "grokAnnotations": null,
   "grokShareAttachment": null,
+  "grokTranslatedPostWithAvailability": null,
   "hasBirdwatchNotes": null,
   "isTranslatable": null,
   "legacy": null,
   "noteTweet": null,
+  "postCta": null,
+  "postImageDescription": null,
+  "postVideoDescription": null,
   "previousCounts": null,
   "quickPromoteEligibility": null,
   "quotedRefResult": null,

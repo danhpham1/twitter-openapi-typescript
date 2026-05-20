@@ -8,8 +8,11 @@ Name | Type
 ------------ | -------------
 `typename` | [TypeName](TypeName.md)
 `affiliatesHighlightedLabel` | { [key: string]: any; }
+`avatar` | [UserAvatar](UserAvatar.md)
 `businessAccount` | { [key: string]: any; }
+`core` | [UserCore](UserCore.md)
 `creatorSubscriptionsCount` | number
+`dmPermissions` | [UserDmPermissions](UserDmPermissions.md)
 `hasGraduatedAccess` | boolean
 `hasHiddenLikesOnProfile` | boolean
 `hasHiddenSubscriptionsOnProfile` | boolean
@@ -20,17 +23,27 @@ Name | Type
 `isProfileTranslatable` | boolean
 `legacy` | [UserLegacy](UserLegacy.md)
 `legacyExtendedProfile` | [UserLegacyExtendedProfile](UserLegacyExtendedProfile.md)
+`location` | [UserLocation](UserLocation.md)
+`mediaPermissions` | [UserMediaPermissions](UserMediaPermissions.md)
 `parodyCommentaryFanLabel` | string
 `premiumGiftingEligible` | boolean
+`privacy` | [UserPrivacy](UserPrivacy.md)
 `professional` | [UserProfessional](UserProfessional.md)
+`profileBio` | [ProfileBio](ProfileBio.md)
+`profileDescriptionLanguage` | string
 `profileImageShape` | string
+`profileSortEnabled` | boolean
+`relationshipPerspectives` | [UserRelationshipPerspectives](UserRelationshipPerspectives.md)
 `restId` | string
 `superFollowEligible` | boolean
 `superFollowedBy` | boolean
 `superFollowing` | boolean
+`superFollowsUserProfile` | [UserProfile](UserProfile.md)
 `tipjarSettings` | [UserTipJarSettings](UserTipJarSettings.md)
 `userSeedTweetCount` | number
+`verification` | [UserVerification](UserVerification.md)
 `verificationInfo` | [UserVerificationInfo](UserVerificationInfo.md)
+`verifiedUserProfiles` | [UserProfile](UserProfile.md)
 
 ## Example
 
@@ -41,8 +54,11 @@ import type { User } from 'twitter-openapi-typescript-generated'
 const example = {
   "typename": null,
   "affiliatesHighlightedLabel": null,
+  "avatar": null,
   "businessAccount": null,
+  "core": null,
   "creatorSubscriptionsCount": null,
+  "dmPermissions": null,
   "hasGraduatedAccess": null,
   "hasHiddenLikesOnProfile": null,
   "hasHiddenSubscriptionsOnProfile": null,
@@ -53,17 +69,27 @@ const example = {
   "isProfileTranslatable": null,
   "legacy": null,
   "legacyExtendedProfile": null,
+  "location": null,
+  "mediaPermissions": null,
   "parodyCommentaryFanLabel": null,
   "premiumGiftingEligible": null,
+  "privacy": null,
   "professional": null,
+  "profileBio": null,
+  "profileDescriptionLanguage": null,
   "profileImageShape": null,
+  "profileSortEnabled": null,
+  "relationshipPerspectives": null,
   "restId": null,
   "superFollowEligible": null,
   "superFollowedBy": null,
   "superFollowing": null,
+  "superFollowsUserProfile": null,
   "tipjarSettings": null,
   "userSeedTweetCount": null,
+  "verification": null,
   "verificationInfo": null,
+  "verifiedUserProfiles": null,
 } satisfies User
 
 console.log(example)

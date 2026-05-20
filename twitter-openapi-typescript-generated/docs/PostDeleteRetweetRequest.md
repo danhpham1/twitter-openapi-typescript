@@ -16,7 +16,7 @@ import type { PostDeleteRetweetRequest } from 'twitter-openapi-typescript-genera
 
 // TODO: Update the object below with actual values
 const example = {
-  "queryId": iQtK4dl5hBmXewYZuEOKVw,
+  "queryId": ZyZigVsNiFO6v1dEks1eWg,
   "variables": null,
 } satisfies PostDeleteRetweetRequest
 

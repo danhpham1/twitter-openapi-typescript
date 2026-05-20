@@ -6,9 +6,12 @@
 
 Name | Type
 ------------ | -------------
+`contentState` | { [key: string]: any; }
 `coverMedia` | [ArticleCoverMedia](ArticleCoverMedia.md)
 `id` | string
+`isGrokSummaryEligible` | boolean
 `lifecycleState` | [ArticleLifecycleState](ArticleLifecycleState.md)
+`mediaEntities` | [Array&lt;ArticleCoverMedia&gt;](ArticleCoverMedia.md)
 `metadata` | [ArticleMetadata](ArticleMetadata.md)
 `previewText` | string
 `restId` | string
@@ -21,9 +24,12 @@ import type { ArticleResult } from 'twitter-openapi-typescript-generated'
 
 // TODO: Update the object below with actual values
 const example = {
+  "contentState": null,
   "coverMedia": null,
   "id": null,
+  "isGrokSummaryEligible": null,
   "lifecycleState": null,
+  "mediaEntities": null,
   "metadata": null,
   "previewText": null,
   "restId": null,

@@ -13,13 +13,62 @@
  */
 
 import { mapValues } from '../runtime';
-import type { CommunityData } from './CommunityData';
+import type { PrimaryCommunityTopic } from './PrimaryCommunityTopic';
 import {
-    CommunityDataFromJSON,
-    CommunityDataFromJSONTyped,
-    CommunityDataToJSON,
-    CommunityDataToJSONTyped,
-} from './CommunityData';
+    PrimaryCommunityTopicFromJSON,
+    PrimaryCommunityTopicFromJSONTyped,
+    PrimaryCommunityTopicToJSON,
+    PrimaryCommunityTopicToJSONTyped,
+} from './PrimaryCommunityTopic';
+import type { CommunityActions } from './CommunityActions';
+import {
+    CommunityActionsFromJSON,
+    CommunityActionsFromJSONTyped,
+    CommunityActionsToJSON,
+    CommunityActionsToJSONTyped,
+} from './CommunityActions';
+import type { TypeName } from './TypeName';
+import {
+    TypeNameFromJSON,
+    TypeNameFromJSONTyped,
+    TypeNameToJSON,
+    TypeNameToJSONTyped,
+} from './TypeName';
+import type { CommunityJoinRequestsResult } from './CommunityJoinRequestsResult';
+import {
+    CommunityJoinRequestsResultFromJSON,
+    CommunityJoinRequestsResultFromJSONTyped,
+    CommunityJoinRequestsResultToJSON,
+    CommunityJoinRequestsResultToJSONTyped,
+} from './CommunityJoinRequestsResult';
+import type { CommunityInvitesResult } from './CommunityInvitesResult';
+import {
+    CommunityInvitesResultFromJSON,
+    CommunityInvitesResultFromJSONTyped,
+    CommunityInvitesResultToJSON,
+    CommunityInvitesResultToJSONTyped,
+} from './CommunityInvitesResult';
+import type { CommunityRule } from './CommunityRule';
+import {
+    CommunityRuleFromJSON,
+    CommunityRuleFromJSONTyped,
+    CommunityRuleToJSON,
+    CommunityRuleToJSONTyped,
+} from './CommunityRule';
+import type { CommunityUrls } from './CommunityUrls';
+import {
+    CommunityUrlsFromJSON,
+    CommunityUrlsFromJSONTyped,
+    CommunityUrlsToJSON,
+    CommunityUrlsToJSONTyped,
+} from './CommunityUrls';
+import type { UserResults } from './UserResults';
+import {
+    UserResultsFromJSON,
+    UserResultsFromJSONTyped,
+    UserResultsToJSON,
+    UserResultsToJSONTyped,
+} from './UserResults';
 
 /**
  * 
@@ -29,17 +78,195 @@ import {
 export interface Community {
     /**
      * 
-     * @type {CommunityData}
+     * @type {TypeName}
      * @memberof Community
      */
-    result: CommunityData;
+    typename: TypeName;
+    /**
+     * 
+     * @type {CommunityActions}
+     * @memberof Community
+     */
+    actions?: CommunityActions;
+    /**
+     * 
+     * @type {UserResults}
+     * @memberof Community
+     */
+    adminResults?: UserResults;
+    /**
+     * 
+     * @type {number}
+     * @memberof Community
+     */
+    createdAt?: number;
+    /**
+     * 
+     * @type {UserResults}
+     * @memberof Community
+     */
+    creatorResults?: UserResults;
+    /**
+     * 
+     * @type {{ [key: string]: any; }}
+     * @memberof Community
+     */
+    customBannerMedia?: { [key: string]: any; };
+    /**
+     * 
+     * @type {{ [key: string]: any; }}
+     * @memberof Community
+     */
+    defaultBannerMedia?: { [key: string]: any; };
+    /**
+     * 
+     * @type {string}
+     * @memberof Community
+     */
+    description?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Community
+     */
+    idStr?: string;
+    /**
+     * 
+     * @type {CommunityInvitesPolicyEnum}
+     * @memberof Community
+     */
+    invitesPolicy?: CommunityInvitesPolicyEnum;
+    /**
+     * 
+     * @type {CommunityInvitesResult}
+     * @memberof Community
+     */
+    invitesResult?: CommunityInvitesResult;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Community
+     */
+    isPinned?: boolean;
+    /**
+     * 
+     * @type {CommunityJoinPolicyEnum}
+     * @memberof Community
+     */
+    joinPolicy?: CommunityJoinPolicyEnum;
+    /**
+     * 
+     * @type {CommunityJoinRequestsResult}
+     * @memberof Community
+     */
+    joinRequestsResult?: CommunityJoinRequestsResult;
+    /**
+     * 
+     * @type {number}
+     * @memberof Community
+     */
+    memberCount?: number;
+    /**
+     * 
+     * @type {Array<UserResults>}
+     * @memberof Community
+     */
+    membersFacepileResults?: Array<UserResults>;
+    /**
+     * 
+     * @type {number}
+     * @memberof Community
+     */
+    moderatorCount?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof Community
+     */
+    name?: string;
+    /**
+     * 
+     * @type {PrimaryCommunityTopic}
+     * @memberof Community
+     */
+    primaryCommunityTopic?: PrimaryCommunityTopic;
+    /**
+     * 
+     * @type {string}
+     * @memberof Community
+     */
+    question?: string;
+    /**
+     * 
+     * @type {CommunityRoleEnum}
+     * @memberof Community
+     */
+    role?: CommunityRoleEnum;
+    /**
+     * 
+     * @type {Array<CommunityRule>}
+     * @memberof Community
+     */
+    rules?: Array<CommunityRule>;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof Community
+     */
+    searchTags?: Array<string>;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof Community
+     */
+    showOnlyUsersToDisplay?: Array<string>;
+    /**
+     * 
+     * @type {CommunityUrls}
+     * @memberof Community
+     */
+    urls?: CommunityUrls;
+    /**
+     * 
+     * @type {{ [key: string]: any; }}
+     * @memberof Community
+     */
+    viewerRelationship?: { [key: string]: any; };
 }
+
+
+/**
+ * @export
+ */
+export const CommunityInvitesPolicyEnum = {
+    MemberInvitesAllowed: 'MemberInvitesAllowed',
+    ModeratorInvitesAllowed: 'ModeratorInvitesAllowed'
+} as const;
+export type CommunityInvitesPolicyEnum = typeof CommunityInvitesPolicyEnum[keyof typeof CommunityInvitesPolicyEnum];
+
+/**
+ * @export
+ */
+export const CommunityJoinPolicyEnum = {
+    Open: 'Open',
+    RestrictedJoinRequestsRequireModeratorApproval: 'RestrictedJoinRequestsRequireModeratorApproval'
+} as const;
+export type CommunityJoinPolicyEnum = typeof CommunityJoinPolicyEnum[keyof typeof CommunityJoinPolicyEnum];
+
+/**
+ * @export
+ */
+export const CommunityRoleEnum = {
+    NonMember: 'NonMember'
+} as const;
+export type CommunityRoleEnum = typeof CommunityRoleEnum[keyof typeof CommunityRoleEnum];
+
 
 /**
  * Check if a given object implements the Community interface.
  */
 export function instanceOfCommunity(value: object): value is Community {
-    if (!('result' in value) || value['result'] === undefined) return false;
+    if (!('typename' in value) || value['typename'] === undefined) return false;
     return true;
 }
 
@@ -53,7 +280,32 @@ export function CommunityFromJSONTyped(json: any, ignoreDiscriminator: boolean):
     }
     return {
         
-        'result': CommunityDataFromJSON(json['result']),
+        'typename': TypeNameFromJSON(json['__typename']),
+        'actions': json['actions'] == null ? undefined : CommunityActionsFromJSON(json['actions']),
+        'adminResults': json['admin_results'] == null ? undefined : UserResultsFromJSON(json['admin_results']),
+        'createdAt': json['created_at'] == null ? undefined : json['created_at'],
+        'creatorResults': json['creator_results'] == null ? undefined : UserResultsFromJSON(json['creator_results']),
+        'customBannerMedia': json['custom_banner_media'] == null ? undefined : json['custom_banner_media'],
+        'defaultBannerMedia': json['default_banner_media'] == null ? undefined : json['default_banner_media'],
+        'description': json['description'] == null ? undefined : json['description'],
+        'idStr': json['id_str'] == null ? undefined : json['id_str'],
+        'invitesPolicy': json['invites_policy'] == null ? undefined : json['invites_policy'],
+        'invitesResult': json['invites_result'] == null ? undefined : CommunityInvitesResultFromJSON(json['invites_result']),
+        'isPinned': json['is_pinned'] == null ? undefined : json['is_pinned'],
+        'joinPolicy': json['join_policy'] == null ? undefined : json['join_policy'],
+        'joinRequestsResult': json['join_requests_result'] == null ? undefined : CommunityJoinRequestsResultFromJSON(json['join_requests_result']),
+        'memberCount': json['member_count'] == null ? undefined : json['member_count'],
+        'membersFacepileResults': json['members_facepile_results'] == null ? undefined : ((json['members_facepile_results'] as Array<any>).map(UserResultsFromJSON)),
+        'moderatorCount': json['moderator_count'] == null ? undefined : json['moderator_count'],
+        'name': json['name'] == null ? undefined : json['name'],
+        'primaryCommunityTopic': json['primary_community_topic'] == null ? undefined : PrimaryCommunityTopicFromJSON(json['primary_community_topic']),
+        'question': json['question'] == null ? undefined : json['question'],
+        'role': json['role'] == null ? undefined : json['role'],
+        'rules': json['rules'] == null ? undefined : ((json['rules'] as Array<any>).map(CommunityRuleFromJSON)),
+        'searchTags': json['search_tags'] == null ? undefined : json['search_tags'],
+        'showOnlyUsersToDisplay': json['show_only_users_to_display'] == null ? undefined : json['show_only_users_to_display'],
+        'urls': json['urls'] == null ? undefined : CommunityUrlsFromJSON(json['urls']),
+        'viewerRelationship': json['viewer_relationship'] == null ? undefined : json['viewer_relationship'],
     };
 }
 
@@ -68,7 +320,32 @@ export function CommunityToJSONTyped(value?: Community | null, ignoreDiscriminat
 
     return {
         
-        'result': CommunityDataToJSON(value['result']),
+        '__typename': TypeNameToJSON(value['typename']),
+        'actions': CommunityActionsToJSON(value['actions']),
+        'admin_results': UserResultsToJSON(value['adminResults']),
+        'created_at': value['createdAt'],
+        'creator_results': UserResultsToJSON(value['creatorResults']),
+        'custom_banner_media': value['customBannerMedia'],
+        'default_banner_media': value['defaultBannerMedia'],
+        'description': value['description'],
+        'id_str': value['idStr'],
+        'invites_policy': value['invitesPolicy'],
+        'invites_result': CommunityInvitesResultToJSON(value['invitesResult']),
+        'is_pinned': value['isPinned'],
+        'join_policy': value['joinPolicy'],
+        'join_requests_result': CommunityJoinRequestsResultToJSON(value['joinRequestsResult']),
+        'member_count': value['memberCount'],
+        'members_facepile_results': value['membersFacepileResults'] == null ? undefined : ((value['membersFacepileResults'] as Array<any>).map(UserResultsToJSON)),
+        'moderator_count': value['moderatorCount'],
+        'name': value['name'],
+        'primary_community_topic': PrimaryCommunityTopicToJSON(value['primaryCommunityTopic']),
+        'question': value['question'],
+        'role': value['role'],
+        'rules': value['rules'] == null ? undefined : ((value['rules'] as Array<any>).map(CommunityRuleToJSON)),
+        'search_tags': value['searchTags'],
+        'show_only_users_to_display': value['showOnlyUsersToDisplay'],
+        'urls': CommunityUrlsToJSON(value['urls']),
+        'viewer_relationship': value['viewerRelationship'],
     };
 }
 
