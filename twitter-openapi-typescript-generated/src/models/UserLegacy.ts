@@ -249,7 +249,7 @@ export interface UserLegacy {
     verified: boolean;
     /**
      * 
-     * @type {string}
+     * @type {UserLegacyVerifiedTypeEnum}
      * @memberof UserLegacy
      */
     verifiedType?: UserLegacyVerifiedTypeEnum;

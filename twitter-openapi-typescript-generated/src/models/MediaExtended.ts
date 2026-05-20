@@ -193,7 +193,7 @@ export interface MediaExtended {
     sourceUserIdStr?: string;
     /**
      * 
-     * @type {string}
+     * @type {MediaExtendedTypeEnum}
      * @memberof MediaExtended
      */
     type: MediaExtendedTypeEnum;

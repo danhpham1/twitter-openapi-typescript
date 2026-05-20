@@ -43,7 +43,7 @@ import {
 export interface TimelineShowAlert {
     /**
      * 
-     * @type {string}
+     * @type {TimelineShowAlertAlertTypeEnum}
      * @memberof TimelineShowAlert
      */
     alertType?: TimelineShowAlertAlertTypeEnum;
@@ -61,7 +61,7 @@ export interface TimelineShowAlert {
     displayDurationMs?: number;
     /**
      * 
-     * @type {string}
+     * @type {TimelineShowAlertDisplayLocationEnum}
      * @memberof TimelineShowAlert
      */
     displayLocation?: TimelineShowAlertDisplayLocationEnum;

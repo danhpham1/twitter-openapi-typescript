@@ -68,7 +68,7 @@ export interface BirdwatchPivot {
     footer?: BirdwatchPivotFooter;
     /**
      * 
-     * @type {string}
+     * @type {BirdwatchPivotIconTypeEnum}
      * @memberof BirdwatchPivot
      */
     iconType: BirdwatchPivotIconTypeEnum;
@@ -104,7 +104,7 @@ export interface BirdwatchPivot {
     titleDetail?: string;
     /**
      * 
-     * @type {string}
+     * @type {BirdwatchPivotVisualStyleEnum}
      * @memberof BirdwatchPivot
      */
     visualStyle?: BirdwatchPivotVisualStyleEnum;

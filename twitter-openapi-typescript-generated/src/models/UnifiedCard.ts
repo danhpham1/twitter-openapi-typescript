@@ -21,7 +21,7 @@ import { mapValues } from '../runtime';
 export interface UnifiedCard {
     /**
      * 
-     * @type {string}
+     * @type {UnifiedCardCardFetchStateEnum}
      * @memberof UnifiedCard
      */
     cardFetchState: UnifiedCardCardFetchStateEnum;

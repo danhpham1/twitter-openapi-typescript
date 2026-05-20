@@ -41,7 +41,7 @@ export interface CommunityLeaveActionResult {
     message: string;
     /**
      * 
-     * @type {string}
+     * @type {CommunityLeaveActionResultReasonEnum}
      * @memberof CommunityLeaveActionResult
      */
     reason: CommunityLeaveActionResultReasonEnum;

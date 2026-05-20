@@ -48,7 +48,7 @@ export function CommunityJoinActionResultUnionFromJSONTyped(json: any, ignoreDis
         case 'CommunityJoinActionUnavailable':
             return Object.assign({}, CommunityJoinActionUnavailableFromJSONTyped(json, true), { typename: 'CommunityJoinActionUnavailable' } as const);
         default:
-            throw new Error(`No variant of CommunityJoinActionResultUnion exists with 'typename=${json['typename']}'`);
+            return json;
     }
 }
 
@@ -66,8 +66,7 @@ export function CommunityJoinActionResultUnionToJSONTyped(value?: CommunityJoinA
         case 'CommunityJoinActionUnavailable':
             return Object.assign({}, CommunityJoinActionUnavailableToJSON(value), { typename: 'CommunityJoinActionUnavailable' } as const);
         default:
-            throw new Error(`No variant of CommunityJoinActionResultUnion exists with 'typename=${value['typename']}'`);
+            return value;
     }
-
 }
 

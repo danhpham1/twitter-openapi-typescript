@@ -27,7 +27,7 @@ export interface BirdwatchEntityRef {
     text?: string;
     /**
      * 
-     * @type {string}
+     * @type {BirdwatchEntityRefTypeEnum}
      * @memberof BirdwatchEntityRef
      */
     type: BirdwatchEntityRefTypeEnum;
@@ -39,7 +39,7 @@ export interface BirdwatchEntityRef {
     url?: string;
     /**
      * 
-     * @type {string}
+     * @type {BirdwatchEntityRefUrlTypeEnum}
      * @memberof BirdwatchEntityRef
      */
     urlType?: BirdwatchEntityRefUrlTypeEnum;

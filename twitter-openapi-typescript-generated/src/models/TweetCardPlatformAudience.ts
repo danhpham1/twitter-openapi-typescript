@@ -21,7 +21,7 @@ import { mapValues } from '../runtime';
 export interface TweetCardPlatformAudience {
     /**
      * 
-     * @type {string}
+     * @type {TweetCardPlatformAudienceNameEnum}
      * @memberof TweetCardPlatformAudience
      */
     name: TweetCardPlatformAudienceNameEnum;

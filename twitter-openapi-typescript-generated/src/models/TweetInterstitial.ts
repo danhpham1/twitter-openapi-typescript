@@ -49,7 +49,7 @@ export interface TweetInterstitial {
     typename: TypeName;
     /**
      * 
-     * @type {string}
+     * @type {TweetInterstitialDisplayTypeEnum}
      * @memberof TweetInterstitial
      */
     displayType: TweetInterstitialDisplayTypeEnum;

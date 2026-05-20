@@ -35,7 +35,7 @@ export interface SocialContextLandingUrl {
     url?: string;
     /**
      * 
-     * @type {string}
+     * @type {SocialContextLandingUrlUrlTypeEnum}
      * @memberof SocialContextLandingUrl
      */
     urlType?: SocialContextLandingUrlUrlTypeEnum;

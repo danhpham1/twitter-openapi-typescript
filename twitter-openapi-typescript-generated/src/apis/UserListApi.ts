@@ -12,21 +12,22 @@
  * Do not edit the class manually.
  */
 
-
 import * as runtime from '../runtime';
-import type {
-  FollowResponse,
-  TweetFavoritersResponse,
-  TweetRetweetersResponse,
-} from '../models/index';
 import {
+    type FollowResponse,
     FollowResponseFromJSON,
     FollowResponseToJSON,
+} from '../models/FollowResponse';
+import {
+    type TweetFavoritersResponse,
     TweetFavoritersResponseFromJSON,
     TweetFavoritersResponseToJSON,
+} from '../models/TweetFavoritersResponse';
+import {
+    type TweetRetweetersResponse,
     TweetRetweetersResponseFromJSON,
     TweetRetweetersResponseToJSON,
-} from '../models/index';
+} from '../models/TweetRetweetersResponse';
 
 export interface GetFavoritersRequest {
     pathQueryId: string;
@@ -64,9 +65,9 @@ export interface GetRetweetersRequest {
 export class UserListApi extends runtime.BaseAPI {
 
     /**
-     * get tweet favoriters
+     * Creates request options for getFavoriters without sending the request
      */
-    async getFavoritersRaw(requestParameters: GetFavoritersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TweetFavoritersResponse>> {
+    async getFavoritersRequestOpts(requestParameters: GetFavoritersRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -184,12 +185,24 @@ export class UserListApi extends runtime.BaseAPI {
             headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
         }
 
-        const response = await this.request({
-            path: `/graphql/{pathQueryId}/Favoriters`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
+
+        let urlPath = `/graphql/{pathQueryId}/Favoriters`;
+        urlPath = urlPath.replace('{pathQueryId}', encodeURIComponent(String(requestParameters['pathQueryId'])));
+
+        return {
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * get tweet favoriters
+     */
+    async getFavoritersRaw(requestParameters: GetFavoritersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TweetFavoritersResponse>> {
+        const requestOptions = await this.getFavoritersRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => TweetFavoritersResponseFromJSON(jsonValue));
     }
@@ -203,9 +216,9 @@ export class UserListApi extends runtime.BaseAPI {
     }
 
     /**
-     * get user list of followers
+     * Creates request options for getFollowers without sending the request
      */
-    async getFollowersRaw(requestParameters: GetFollowersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FollowResponse>> {
+    async getFollowersRequestOpts(requestParameters: GetFollowersRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -323,12 +336,24 @@ export class UserListApi extends runtime.BaseAPI {
             headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
         }
 
-        const response = await this.request({
-            path: `/graphql/{pathQueryId}/Followers`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
+
+        let urlPath = `/graphql/{pathQueryId}/Followers`;
+        urlPath = urlPath.replace('{pathQueryId}', encodeURIComponent(String(requestParameters['pathQueryId'])));
+
+        return {
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * get user list of followers
+     */
+    async getFollowersRaw(requestParameters: GetFollowersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FollowResponse>> {
+        const requestOptions = await this.getFollowersRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => FollowResponseFromJSON(jsonValue));
     }
@@ -342,9 +367,9 @@ export class UserListApi extends runtime.BaseAPI {
     }
 
     /**
-     * get followers you know
+     * Creates request options for getFollowersYouKnow without sending the request
      */
-    async getFollowersYouKnowRaw(requestParameters: GetFollowersYouKnowRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FollowResponse>> {
+    async getFollowersYouKnowRequestOpts(requestParameters: GetFollowersYouKnowRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -462,12 +487,24 @@ export class UserListApi extends runtime.BaseAPI {
             headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
         }
 
-        const response = await this.request({
-            path: `/graphql/{pathQueryId}/FollowersYouKnow`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
+
+        let urlPath = `/graphql/{pathQueryId}/FollowersYouKnow`;
+        urlPath = urlPath.replace('{pathQueryId}', encodeURIComponent(String(requestParameters['pathQueryId'])));
+
+        return {
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * get followers you know
+     */
+    async getFollowersYouKnowRaw(requestParameters: GetFollowersYouKnowRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FollowResponse>> {
+        const requestOptions = await this.getFollowersYouKnowRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => FollowResponseFromJSON(jsonValue));
     }
@@ -481,9 +518,9 @@ export class UserListApi extends runtime.BaseAPI {
     }
 
     /**
-     * get user list of following
+     * Creates request options for getFollowing without sending the request
      */
-    async getFollowingRaw(requestParameters: GetFollowingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FollowResponse>> {
+    async getFollowingRequestOpts(requestParameters: GetFollowingRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -601,12 +638,24 @@ export class UserListApi extends runtime.BaseAPI {
             headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
         }
 
-        const response = await this.request({
-            path: `/graphql/{pathQueryId}/Following`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
+
+        let urlPath = `/graphql/{pathQueryId}/Following`;
+        urlPath = urlPath.replace('{pathQueryId}', encodeURIComponent(String(requestParameters['pathQueryId'])));
+
+        return {
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * get user list of following
+     */
+    async getFollowingRaw(requestParameters: GetFollowingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FollowResponse>> {
+        const requestOptions = await this.getFollowingRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => FollowResponseFromJSON(jsonValue));
     }
@@ -620,9 +669,9 @@ export class UserListApi extends runtime.BaseAPI {
     }
 
     /**
-     * get tweet retweeters
+     * Creates request options for getRetweeters without sending the request
      */
-    async getRetweetersRaw(requestParameters: GetRetweetersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TweetRetweetersResponse>> {
+    async getRetweetersRequestOpts(requestParameters: GetRetweetersRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -740,12 +789,24 @@ export class UserListApi extends runtime.BaseAPI {
             headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
         }
 
-        const response = await this.request({
-            path: `/graphql/{pathQueryId}/Retweeters`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
+
+        let urlPath = `/graphql/{pathQueryId}/Retweeters`;
+        urlPath = urlPath.replace('{pathQueryId}', encodeURIComponent(String(requestParameters['pathQueryId'])));
+
+        return {
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * get tweet retweeters
+     */
+    async getRetweetersRaw(requestParameters: GetRetweetersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TweetRetweetersResponse>> {
+        const requestOptions = await this.getRetweetersRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => TweetRetweetersResponseFromJSON(jsonValue));
     }

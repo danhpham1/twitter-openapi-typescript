@@ -41,7 +41,7 @@ export interface CommunityJoinActionUnavailable {
     message: string;
     /**
      * 
-     * @type {string}
+     * @type {CommunityJoinActionUnavailableReasonEnum}
      * @memberof CommunityJoinActionUnavailable
      */
     reason: CommunityJoinActionUnavailableReasonEnum;

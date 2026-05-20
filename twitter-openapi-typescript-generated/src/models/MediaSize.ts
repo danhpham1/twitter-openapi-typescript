@@ -27,7 +27,7 @@ export interface MediaSize {
     h: number;
     /**
      * 
-     * @type {string}
+     * @type {MediaSizeResizeEnum}
      * @memberof MediaSize
      */
     resize: MediaSizeResizeEnum;

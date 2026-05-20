@@ -49,7 +49,7 @@ export interface TimelineHalfCover {
     dismissible: boolean;
     /**
      * 
-     * @type {string}
+     * @type {TimelineHalfCoverHalfCoverDisplayTypeEnum}
      * @memberof TimelineHalfCover
      */
     halfCoverDisplayType: TimelineHalfCoverHalfCoverDisplayTypeEnum;
@@ -79,7 +79,7 @@ export interface TimelineHalfCover {
     secondaryText: Text;
     /**
      * 
-     * @type {string}
+     * @type {TimelineHalfCoverTypeEnum}
      * @memberof TimelineHalfCover
      */
     type: TimelineHalfCoverTypeEnum;

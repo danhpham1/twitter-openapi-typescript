@@ -12,7 +12,6 @@
  * Do not edit the class manually.
  */
 
-
 import * as runtime from '../runtime';
 
 export interface PostCreateFriendshipsRequest {
@@ -55,9 +54,9 @@ export interface PostDestroyFriendshipsRequest {
 export class V11PostApi extends runtime.BaseAPI {
 
     /**
-     * post create friendships
+     * Creates request options for postCreateFriendships without sending the request
      */
-    async postCreateFriendshipsRaw(requestParameters: PostCreateFriendshipsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    async postCreateFriendshipsRequestOpts(requestParameters: PostCreateFriendshipsRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['includeBlockedBy'] == null) {
             throw new runtime.RequiredError(
                 'includeBlockedBy',
@@ -314,13 +313,24 @@ export class V11PostApi extends runtime.BaseAPI {
             formParams.append('user_id', requestParameters['userId'] as any);
         }
 
-        const response = await this.request({
-            path: `/1.1/friendships/create.json`,
+
+        let urlPath = `/1.1/friendships/create.json`;
+
+        return {
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
             body: formParams,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * post create friendships
+     */
+    async postCreateFriendshipsRaw(requestParameters: PostCreateFriendshipsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        const requestOptions = await this.postCreateFriendshipsRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.VoidApiResponse(response);
     }
@@ -333,9 +343,9 @@ export class V11PostApi extends runtime.BaseAPI {
     }
 
     /**
-     * post destroy friendships
+     * Creates request options for postDestroyFriendships without sending the request
      */
-    async postDestroyFriendshipsRaw(requestParameters: PostDestroyFriendshipsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    async postDestroyFriendshipsRequestOpts(requestParameters: PostDestroyFriendshipsRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['includeBlockedBy'] == null) {
             throw new runtime.RequiredError(
                 'includeBlockedBy',
@@ -592,13 +602,24 @@ export class V11PostApi extends runtime.BaseAPI {
             formParams.append('user_id', requestParameters['userId'] as any);
         }
 
-        const response = await this.request({
-            path: `/1.1/friendships/destroy.json`,
+
+        let urlPath = `/1.1/friendships/destroy.json`;
+
+        return {
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
             body: formParams,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * post destroy friendships
+     */
+    async postDestroyFriendshipsRaw(requestParameters: PostDestroyFriendshipsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        const requestOptions = await this.postDestroyFriendshipsRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.VoidApiResponse(response);
     }

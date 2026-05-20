@@ -42,7 +42,7 @@ export interface AuthorCommunityRelationship {
     communityResults: Community;
     /**
      * 
-     * @type {string}
+     * @type {AuthorCommunityRelationshipRoleEnum}
      * @memberof AuthorCommunityRelationship
      */
     role?: AuthorCommunityRelationshipRoleEnum;

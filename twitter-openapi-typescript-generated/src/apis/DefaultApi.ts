@@ -12,18 +12,17 @@
  * Do not edit the class manually.
  */
 
-
 import * as runtime from '../runtime';
-import type {
-  ProfileResponse,
-  TweetResultByRestIdResponse,
-} from '../models/index';
 import {
+    type ProfileResponse,
     ProfileResponseFromJSON,
     ProfileResponseToJSON,
+} from '../models/ProfileResponse';
+import {
+    type TweetResultByRestIdResponse,
     TweetResultByRestIdResponseFromJSON,
     TweetResultByRestIdResponseToJSON,
-} from '../models/index';
+} from '../models/TweetResultByRestIdResponse';
 
 export interface GetProfileSpotlightsQueryRequest {
     pathQueryId: string;
@@ -44,9 +43,9 @@ export interface GetTweetResultByRestIdRequest {
 export class DefaultApi extends runtime.BaseAPI {
 
     /**
-     * get user by screen name
+     * Creates request options for getProfileSpotlightsQuery without sending the request
      */
-    async getProfileSpotlightsQueryRaw(requestParameters: GetProfileSpotlightsQueryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProfileResponse>> {
+    async getProfileSpotlightsQueryRequestOpts(requestParameters: GetProfileSpotlightsQueryRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -164,12 +163,24 @@ export class DefaultApi extends runtime.BaseAPI {
             headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
         }
 
-        const response = await this.request({
-            path: `/graphql/{pathQueryId}/ProfileSpotlightsQuery`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
+
+        let urlPath = `/graphql/{pathQueryId}/ProfileSpotlightsQuery`;
+        urlPath = urlPath.replace('{pathQueryId}', encodeURIComponent(String(requestParameters['pathQueryId'])));
+
+        return {
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * get user by screen name
+     */
+    async getProfileSpotlightsQueryRaw(requestParameters: GetProfileSpotlightsQueryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProfileResponse>> {
+        const requestOptions = await this.getProfileSpotlightsQueryRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ProfileResponseFromJSON(jsonValue));
     }
@@ -183,9 +194,9 @@ export class DefaultApi extends runtime.BaseAPI {
     }
 
     /**
-     * get TweetResultByRestId
+     * Creates request options for getTweetResultByRestId without sending the request
      */
-    async getTweetResultByRestIdRaw(requestParameters: GetTweetResultByRestIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TweetResultByRestIdResponse>> {
+    async getTweetResultByRestIdRequestOpts(requestParameters: GetTweetResultByRestIdRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -314,12 +325,24 @@ export class DefaultApi extends runtime.BaseAPI {
             headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
         }
 
-        const response = await this.request({
-            path: `/graphql/{pathQueryId}/TweetResultByRestId`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
+
+        let urlPath = `/graphql/{pathQueryId}/TweetResultByRestId`;
+        urlPath = urlPath.replace('{pathQueryId}', encodeURIComponent(String(requestParameters['pathQueryId'])));
+
+        return {
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * get TweetResultByRestId
+     */
+    async getTweetResultByRestIdRaw(requestParameters: GetTweetResultByRestIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TweetResultByRestIdResponse>> {
+        const requestOptions = await this.getTweetResultByRestIdRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => TweetResultByRestIdResponseFromJSON(jsonValue));
     }

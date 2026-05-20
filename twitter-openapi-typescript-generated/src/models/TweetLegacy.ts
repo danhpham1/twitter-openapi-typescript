@@ -166,7 +166,7 @@ export interface TweetLegacy {
     lang: string;
     /**
      * 
-     * @type {string}
+     * @type {TweetLegacyLimitedActionsEnum}
      * @memberof TweetLegacy
      */
     limitedActions?: TweetLegacyLimitedActionsEnum;

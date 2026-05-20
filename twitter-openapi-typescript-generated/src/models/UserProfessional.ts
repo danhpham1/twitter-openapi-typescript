@@ -35,7 +35,7 @@ export interface UserProfessional {
     category: Array<UserProfessionalCategory>;
     /**
      * 
-     * @type {string}
+     * @type {UserProfessionalProfessionalTypeEnum}
      * @memberof UserProfessional
      */
     professionalType: UserProfessionalProfessionalTypeEnum;

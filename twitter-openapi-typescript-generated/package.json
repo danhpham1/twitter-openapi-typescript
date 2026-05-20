@@ -1,6 +1,6 @@
 {
   "name": "twitter-openapi-typescript-generated",
-  "version": "0.0.38",
+  "version": "0.0.39",
   "description": "OpenAPI client for twitter-openapi-typescript-generated",
   "author": "fa0311",
   "repository": {
@@ -8,7 +8,7 @@
     "url": "https://github.com/fa0311/twitter-openapi-typescript.git"
   },
   "main": "./dist/index.js",
-  "typings": "./dist/index.d.ts",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsc"
   },

@@ -12,15 +12,12 @@
  * Do not edit the class manually.
  */
 
-
 import * as runtime from '../runtime';
-import type {
-  UserResponse,
-} from '../models/index';
 import {
+    type UserResponse,
     UserResponseFromJSON,
     UserResponseToJSON,
-} from '../models/index';
+} from '../models/UserResponse';
 
 export interface GetUserByRestIdRequest {
     pathQueryId: string;
@@ -41,9 +38,9 @@ export interface GetUserByScreenNameRequest {
 export class UserApi extends runtime.BaseAPI {
 
     /**
-     * get user by rest id
+     * Creates request options for getUserByRestId without sending the request
      */
-    async getUserByRestIdRaw(requestParameters: GetUserByRestIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserResponse>> {
+    async getUserByRestIdRequestOpts(requestParameters: GetUserByRestIdRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -161,12 +158,24 @@ export class UserApi extends runtime.BaseAPI {
             headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
         }
 
-        const response = await this.request({
-            path: `/graphql/{pathQueryId}/UserByRestId`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
+
+        let urlPath = `/graphql/{pathQueryId}/UserByRestId`;
+        urlPath = urlPath.replace('{pathQueryId}', encodeURIComponent(String(requestParameters['pathQueryId'])));
+
+        return {
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * get user by rest id
+     */
+    async getUserByRestIdRaw(requestParameters: GetUserByRestIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserResponse>> {
+        const requestOptions = await this.getUserByRestIdRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UserResponseFromJSON(jsonValue));
     }
@@ -180,9 +189,9 @@ export class UserApi extends runtime.BaseAPI {
     }
 
     /**
-     * get user by screen name
+     * Creates request options for getUserByScreenName without sending the request
      */
-    async getUserByScreenNameRaw(requestParameters: GetUserByScreenNameRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserResponse>> {
+    async getUserByScreenNameRequestOpts(requestParameters: GetUserByScreenNameRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -311,12 +320,24 @@ export class UserApi extends runtime.BaseAPI {
             headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
         }
 
-        const response = await this.request({
-            path: `/graphql/{pathQueryId}/UserByScreenName`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
+
+        let urlPath = `/graphql/{pathQueryId}/UserByScreenName`;
+        urlPath = urlPath.replace('{pathQueryId}', encodeURIComponent(String(requestParameters['pathQueryId'])));
+
+        return {
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * get user by screen name
+     */
+    async getUserByScreenNameRaw(requestParameters: GetUserByScreenNameRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserResponse>> {
+        const requestOptions = await this.getUserByScreenNameRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UserResponseFromJSON(jsonValue));
     }

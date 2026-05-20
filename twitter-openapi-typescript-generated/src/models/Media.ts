@@ -180,7 +180,7 @@ export interface Media {
     sourceUserIdStr?: string;
     /**
      * 
-     * @type {string}
+     * @type {MediaTypeEnum}
      * @memberof Media
      */
     type: MediaTypeEnum;

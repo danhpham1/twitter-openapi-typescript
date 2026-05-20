@@ -21,7 +21,7 @@ import { mapValues } from '../runtime';
 export interface TweetInterstitialTextEntityRef {
     /**
      * 
-     * @type {string}
+     * @type {TweetInterstitialTextEntityRefTypeEnum}
      * @memberof TweetInterstitialTextEntityRef
      */
     type: TweetInterstitialTextEntityRefTypeEnum;
@@ -33,7 +33,7 @@ export interface TweetInterstitialTextEntityRef {
     url: string;
     /**
      * 
-     * @type {string}
+     * @type {TweetInterstitialTextEntityRefUrlTypeEnum}
      * @memberof TweetInterstitialTextEntityRef
      */
     urlType: TweetInterstitialTextEntityRefUrlTypeEnum;

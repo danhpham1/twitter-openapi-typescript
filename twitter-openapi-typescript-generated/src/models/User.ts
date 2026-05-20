@@ -155,7 +155,7 @@ export interface User {
     legacyExtendedProfile?: UserLegacyExtendedProfile;
     /**
      * 
-     * @type {string}
+     * @type {UserParodyCommentaryFanLabelEnum}
      * @memberof User
      */
     parodyCommentaryFanLabel?: UserParodyCommentaryFanLabelEnum;
@@ -173,7 +173,7 @@ export interface User {
     professional?: UserProfessional;
     /**
      * 
-     * @type {string}
+     * @type {UserProfileImageShapeEnum}
      * @memberof User
      */
     profileImageShape: UserProfileImageShapeEnum;

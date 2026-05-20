@@ -12,60 +12,87 @@
  * Do not edit the class manually.
  */
 
-
 import * as runtime from '../runtime';
-import type {
-  CreateBookmarkResponse,
-  CreateRetweetResponse,
-  CreateTweetResponse,
-  DeleteBookmarkResponse,
-  DeleteRetweetResponse,
-  DeleteTweetResponse,
-  FavoriteTweetResponse,
-  PostCreateBookmarkRequest,
-  PostCreateRetweetRequest,
-  PostCreateTweetRequest,
-  PostDeleteBookmarkRequest,
-  PostDeleteRetweetRequest,
-  PostDeleteTweetRequest,
-  PostFavoriteTweetRequest,
-  PostUnfavoriteTweetRequest,
-  UnfavoriteTweetResponse,
-} from '../models/index';
 import {
+    type CreateBookmarkResponse,
     CreateBookmarkResponseFromJSON,
     CreateBookmarkResponseToJSON,
+} from '../models/CreateBookmarkResponse';
+import {
+    type CreateRetweetResponse,
     CreateRetweetResponseFromJSON,
     CreateRetweetResponseToJSON,
+} from '../models/CreateRetweetResponse';
+import {
+    type CreateTweetResponse,
     CreateTweetResponseFromJSON,
     CreateTweetResponseToJSON,
+} from '../models/CreateTweetResponse';
+import {
+    type DeleteBookmarkResponse,
     DeleteBookmarkResponseFromJSON,
     DeleteBookmarkResponseToJSON,
+} from '../models/DeleteBookmarkResponse';
+import {
+    type DeleteRetweetResponse,
     DeleteRetweetResponseFromJSON,
     DeleteRetweetResponseToJSON,
+} from '../models/DeleteRetweetResponse';
+import {
+    type DeleteTweetResponse,
     DeleteTweetResponseFromJSON,
     DeleteTweetResponseToJSON,
+} from '../models/DeleteTweetResponse';
+import {
+    type FavoriteTweetResponse,
     FavoriteTweetResponseFromJSON,
     FavoriteTweetResponseToJSON,
+} from '../models/FavoriteTweetResponse';
+import {
+    type PostCreateBookmarkRequest,
     PostCreateBookmarkRequestFromJSON,
     PostCreateBookmarkRequestToJSON,
+} from '../models/PostCreateBookmarkRequest';
+import {
+    type PostCreateRetweetRequest,
     PostCreateRetweetRequestFromJSON,
     PostCreateRetweetRequestToJSON,
+} from '../models/PostCreateRetweetRequest';
+import {
+    type PostCreateTweetRequest,
     PostCreateTweetRequestFromJSON,
     PostCreateTweetRequestToJSON,
+} from '../models/PostCreateTweetRequest';
+import {
+    type PostDeleteBookmarkRequest,
     PostDeleteBookmarkRequestFromJSON,
     PostDeleteBookmarkRequestToJSON,
+} from '../models/PostDeleteBookmarkRequest';
+import {
+    type PostDeleteRetweetRequest,
     PostDeleteRetweetRequestFromJSON,
     PostDeleteRetweetRequestToJSON,
+} from '../models/PostDeleteRetweetRequest';
+import {
+    type PostDeleteTweetRequest,
     PostDeleteTweetRequestFromJSON,
     PostDeleteTweetRequestToJSON,
+} from '../models/PostDeleteTweetRequest';
+import {
+    type PostFavoriteTweetRequest,
     PostFavoriteTweetRequestFromJSON,
     PostFavoriteTweetRequestToJSON,
+} from '../models/PostFavoriteTweetRequest';
+import {
+    type PostUnfavoriteTweetRequest,
     PostUnfavoriteTweetRequestFromJSON,
     PostUnfavoriteTweetRequestToJSON,
+} from '../models/PostUnfavoriteTweetRequest';
+import {
+    type UnfavoriteTweetResponse,
     UnfavoriteTweetResponseFromJSON,
     UnfavoriteTweetResponseToJSON,
-} from '../models/index';
+} from '../models/UnfavoriteTweetResponse';
 
 export interface PostCreateBookmarkOperationRequest {
     pathQueryId: string;
@@ -113,9 +140,9 @@ export interface PostUnfavoriteTweetOperationRequest {
 export class PostApi extends runtime.BaseAPI {
 
     /**
-     * create Bookmark
+     * Creates request options for postCreateBookmark without sending the request
      */
-    async postCreateBookmarkRaw(requestParameters: PostCreateBookmarkOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateBookmarkResponse>> {
+    async postCreateBookmarkRequestOpts(requestParameters: PostCreateBookmarkOperationRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -220,13 +247,25 @@ export class PostApi extends runtime.BaseAPI {
             headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
         }
 
-        const response = await this.request({
-            path: `/graphql/{pathQueryId}/CreateBookmark`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
+
+        let urlPath = `/graphql/{pathQueryId}/CreateBookmark`;
+        urlPath = urlPath.replace('{pathQueryId}', encodeURIComponent(String(requestParameters['pathQueryId'])));
+
+        return {
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
             body: PostCreateBookmarkRequestToJSON(requestParameters['postCreateBookmarkRequest']),
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * create Bookmark
+     */
+    async postCreateBookmarkRaw(requestParameters: PostCreateBookmarkOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateBookmarkResponse>> {
+        const requestOptions = await this.postCreateBookmarkRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateBookmarkResponseFromJSON(jsonValue));
     }
@@ -240,9 +279,9 @@ export class PostApi extends runtime.BaseAPI {
     }
 
     /**
-     * create Retweet
+     * Creates request options for postCreateRetweet without sending the request
      */
-    async postCreateRetweetRaw(requestParameters: PostCreateRetweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateRetweetResponse>> {
+    async postCreateRetweetRequestOpts(requestParameters: PostCreateRetweetOperationRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -347,13 +386,25 @@ export class PostApi extends runtime.BaseAPI {
             headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
         }
 
-        const response = await this.request({
-            path: `/graphql/{pathQueryId}/CreateRetweet`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
+
+        let urlPath = `/graphql/{pathQueryId}/CreateRetweet`;
+        urlPath = urlPath.replace('{pathQueryId}', encodeURIComponent(String(requestParameters['pathQueryId'])));
+
+        return {
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
             body: PostCreateRetweetRequestToJSON(requestParameters['postCreateRetweetRequest']),
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * create Retweet
+     */
+    async postCreateRetweetRaw(requestParameters: PostCreateRetweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateRetweetResponse>> {
+        const requestOptions = await this.postCreateRetweetRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateRetweetResponseFromJSON(jsonValue));
     }
@@ -367,9 +418,9 @@ export class PostApi extends runtime.BaseAPI {
     }
 
     /**
-     * create Tweet
+     * Creates request options for postCreateTweet without sending the request
      */
-    async postCreateTweetRaw(requestParameters: PostCreateTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateTweetResponse>> {
+    async postCreateTweetRequestOpts(requestParameters: PostCreateTweetOperationRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -474,13 +525,25 @@ export class PostApi extends runtime.BaseAPI {
             headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
         }
 
-        const response = await this.request({
-            path: `/graphql/{pathQueryId}/CreateTweet`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
+
+        let urlPath = `/graphql/{pathQueryId}/CreateTweet`;
+        urlPath = urlPath.replace('{pathQueryId}', encodeURIComponent(String(requestParameters['pathQueryId'])));
+
+        return {
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
             body: PostCreateTweetRequestToJSON(requestParameters['postCreateTweetRequest']),
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * create Tweet
+     */
+    async postCreateTweetRaw(requestParameters: PostCreateTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateTweetResponse>> {
+        const requestOptions = await this.postCreateTweetRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateTweetResponseFromJSON(jsonValue));
     }
@@ -494,9 +557,9 @@ export class PostApi extends runtime.BaseAPI {
     }
 
     /**
-     * delete Bookmark
+     * Creates request options for postDeleteBookmark without sending the request
      */
-    async postDeleteBookmarkRaw(requestParameters: PostDeleteBookmarkOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeleteBookmarkResponse>> {
+    async postDeleteBookmarkRequestOpts(requestParameters: PostDeleteBookmarkOperationRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -601,13 +664,25 @@ export class PostApi extends runtime.BaseAPI {
             headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
         }
 
-        const response = await this.request({
-            path: `/graphql/{pathQueryId}/DeleteBookmark`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
+
+        let urlPath = `/graphql/{pathQueryId}/DeleteBookmark`;
+        urlPath = urlPath.replace('{pathQueryId}', encodeURIComponent(String(requestParameters['pathQueryId'])));
+
+        return {
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
             body: PostDeleteBookmarkRequestToJSON(requestParameters['postDeleteBookmarkRequest']),
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * delete Bookmark
+     */
+    async postDeleteBookmarkRaw(requestParameters: PostDeleteBookmarkOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeleteBookmarkResponse>> {
+        const requestOptions = await this.postDeleteBookmarkRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => DeleteBookmarkResponseFromJSON(jsonValue));
     }
@@ -621,9 +696,9 @@ export class PostApi extends runtime.BaseAPI {
     }
 
     /**
-     * delete Retweet
+     * Creates request options for postDeleteRetweet without sending the request
      */
-    async postDeleteRetweetRaw(requestParameters: PostDeleteRetweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeleteRetweetResponse>> {
+    async postDeleteRetweetRequestOpts(requestParameters: PostDeleteRetweetOperationRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -728,13 +803,25 @@ export class PostApi extends runtime.BaseAPI {
             headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
         }
 
-        const response = await this.request({
-            path: `/graphql/{pathQueryId}/DeleteRetweet`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
+
+        let urlPath = `/graphql/{pathQueryId}/DeleteRetweet`;
+        urlPath = urlPath.replace('{pathQueryId}', encodeURIComponent(String(requestParameters['pathQueryId'])));
+
+        return {
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
             body: PostDeleteRetweetRequestToJSON(requestParameters['postDeleteRetweetRequest']),
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * delete Retweet
+     */
+    async postDeleteRetweetRaw(requestParameters: PostDeleteRetweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeleteRetweetResponse>> {
+        const requestOptions = await this.postDeleteRetweetRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => DeleteRetweetResponseFromJSON(jsonValue));
     }
@@ -748,9 +835,9 @@ export class PostApi extends runtime.BaseAPI {
     }
 
     /**
-     * delete Retweet
+     * Creates request options for postDeleteTweet without sending the request
      */
-    async postDeleteTweetRaw(requestParameters: PostDeleteTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeleteTweetResponse>> {
+    async postDeleteTweetRequestOpts(requestParameters: PostDeleteTweetOperationRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -855,13 +942,25 @@ export class PostApi extends runtime.BaseAPI {
             headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
         }
 
-        const response = await this.request({
-            path: `/graphql/{pathQueryId}/DeleteTweet`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
+
+        let urlPath = `/graphql/{pathQueryId}/DeleteTweet`;
+        urlPath = urlPath.replace('{pathQueryId}', encodeURIComponent(String(requestParameters['pathQueryId'])));
+
+        return {
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
             body: PostDeleteTweetRequestToJSON(requestParameters['postDeleteTweetRequest']),
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * delete Retweet
+     */
+    async postDeleteTweetRaw(requestParameters: PostDeleteTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeleteTweetResponse>> {
+        const requestOptions = await this.postDeleteTweetRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => DeleteTweetResponseFromJSON(jsonValue));
     }
@@ -875,9 +974,9 @@ export class PostApi extends runtime.BaseAPI {
     }
 
     /**
-     * favorite Tweet
+     * Creates request options for postFavoriteTweet without sending the request
      */
-    async postFavoriteTweetRaw(requestParameters: PostFavoriteTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FavoriteTweetResponse>> {
+    async postFavoriteTweetRequestOpts(requestParameters: PostFavoriteTweetOperationRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -982,13 +1081,25 @@ export class PostApi extends runtime.BaseAPI {
             headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
         }
 
-        const response = await this.request({
-            path: `/graphql/{pathQueryId}/FavoriteTweet`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
+
+        let urlPath = `/graphql/{pathQueryId}/FavoriteTweet`;
+        urlPath = urlPath.replace('{pathQueryId}', encodeURIComponent(String(requestParameters['pathQueryId'])));
+
+        return {
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
             body: PostFavoriteTweetRequestToJSON(requestParameters['postFavoriteTweetRequest']),
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * favorite Tweet
+     */
+    async postFavoriteTweetRaw(requestParameters: PostFavoriteTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FavoriteTweetResponse>> {
+        const requestOptions = await this.postFavoriteTweetRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => FavoriteTweetResponseFromJSON(jsonValue));
     }
@@ -1002,9 +1113,9 @@ export class PostApi extends runtime.BaseAPI {
     }
 
     /**
-     * unfavorite Tweet
+     * Creates request options for postUnfavoriteTweet without sending the request
      */
-    async postUnfavoriteTweetRaw(requestParameters: PostUnfavoriteTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UnfavoriteTweetResponse>> {
+    async postUnfavoriteTweetRequestOpts(requestParameters: PostUnfavoriteTweetOperationRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -1109,13 +1220,25 @@ export class PostApi extends runtime.BaseAPI {
             headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
         }
 
-        const response = await this.request({
-            path: `/graphql/{pathQueryId}/UnfavoriteTweet`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
+
+        let urlPath = `/graphql/{pathQueryId}/UnfavoriteTweet`;
+        urlPath = urlPath.replace('{pathQueryId}', encodeURIComponent(String(requestParameters['pathQueryId'])));
+
+        return {
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
             body: PostUnfavoriteTweetRequestToJSON(requestParameters['postUnfavoriteTweetRequest']),
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * unfavorite Tweet
+     */
+    async postUnfavoriteTweetRaw(requestParameters: PostUnfavoriteTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UnfavoriteTweetResponse>> {
+        const requestOptions = await this.postUnfavoriteTweetRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UnfavoriteTweetResponseFromJSON(jsonValue));
     }

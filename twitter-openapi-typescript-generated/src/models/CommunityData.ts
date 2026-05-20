@@ -132,7 +132,7 @@ export interface CommunityData {
     idStr: string;
     /**
      * 
-     * @type {string}
+     * @type {CommunityDataInvitesPolicyEnum}
      * @memberof CommunityData
      */
     invitesPolicy?: CommunityDataInvitesPolicyEnum;
@@ -150,7 +150,7 @@ export interface CommunityData {
     isPinned?: boolean;
     /**
      * 
-     * @type {string}
+     * @type {CommunityDataJoinPolicyEnum}
      * @memberof CommunityData
      */
     joinPolicy?: CommunityDataJoinPolicyEnum;
@@ -198,7 +198,7 @@ export interface CommunityData {
     question?: string;
     /**
      * 
-     * @type {string}
+     * @type {CommunityDataRoleEnum}
      * @memberof CommunityData
      */
     role?: CommunityDataRoleEnum;
